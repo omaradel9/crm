@@ -1,0 +1,54 @@
+<odoo>
+    <data >
+
+
+
+        <record id="access_crm_activity_report_wizard_user" model="ir.model.access">
+            <field name="name">CRM Activity Report Wizard User</field>
+            <field name="model_id" ref="model_activity_report_wizard"/>
+            <field name="group_id" ref="base.group_user"/>
+            <field name="perm_read" eval="1"/>
+            <field name="perm_write" eval="1"/>
+            <field name="perm_create" eval="1"/>
+            <field name="perm_unlink" eval="0"/>
+        </record>
+        <record id="access_crm_activity_create_wizard_user" model="ir.model.access">
+            <field name="name">CRM Activity Create Wizard User</field>
+            <field name="model_id" ref="model_activity_report_create_wizard"/> 
+            <field name="group_id" ref="base.group_user"/>
+            <field name="perm_read" eval="1"/>
+            <field name="perm_write" eval="1"/>
+            <field name="perm_create" eval="1"/>
+            <field name="perm_unlink" eval="0"/>
+        </record>
+        <record id="access_crm_attachments_user" model="ir.model.access">
+            <field name="name">Crm Attachments User</field>
+            <field name="model_id" ref="model_crm_attachments"/>
+            <field name="group_id" ref="base.group_user"/>
+            <field name="perm_read" eval="1"/>
+            <field name="perm_write" eval="1"/>
+            <field name="perm_create" eval="1"/>
+            <field name="perm_unlink" eval="1"/>
+        </record>
+
+        <record id="access_crm_business_line_user" model="ir.model.access">
+            <field name="name">Crm Business Line User</field>
+            <field name="model_id" ref="model_crm_line_business"/>
+            <field name="group_id" ref="base.group_user"/>
+            <field name="perm_read" eval="1"/>
+            <field name="perm_write" eval="1"/>
+            <field name="perm_create" eval="1"/>
+            <field name="perm_unlink" eval="1"/>
+        </record>
+
+
+       
+
+       
+
+
+        
+
+    
+    </data>
+</odoo>

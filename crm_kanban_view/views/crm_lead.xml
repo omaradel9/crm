@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="quick_create_opportunity_form_inherit" model="ir.ui.view">
+        <field name="name">quick.create.opportunity.form.inherit</field>
+        <field name="model">crm.lead</field>
+        <field name="inherit_id" ref="crm.quick_create_opportunity_form"/>
+        <field name="arch" type="xml">
+            
+            <xpath expr="//field[@name='phone']" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </xpath>
+            <xpath expr="//field[@name='name']" position="after">
+                <field name="line_business_id" />
+                <field name="price_list_crm_id"/>
+                <field name="related_currency" invisible='1'/>
+            </xpath>
+            <xpath expr="//field[@name='expected_revenue']" position="attributes">
+                <attribute name="options">{'currency_field': 'related_currency'}</attribute>
+                
+            </xpath>
+            <xpath expr="//field[@name='recurring_revenue']" position="attributes">
+                <attribute name="options">{'currency_field': 'related_currency'}</attribute>
+                
+            </xpath>
+        </field>
+    </record>
+
+    <record id="crm_lead_view_form_inherit" model="ir.ui.view">
+        <field name="name">crm.lead.view.form.inherit</field>
+        <field name="model">crm.lead</field>
+        <field name="inherit_id" ref="crm.crm_lead_view_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//group[@name='opportunity_partner']/field[@name='partner_id']" position="after">
+                <field  name="contact_person"  context="{'default_parent_id': partner_id}" domain="[ ('parent_id', '=', partner_id)]"/>
+                <field name="end_user_id"/>
+                <field name='vendor_id'/>
+                
+            </xpath> 
+            <xpath expr="//field[@name='lead_properties']" position="attributes">
+                <attribute name="invisible">True</attribute>
+            </xpath>
+            <xpath expr="//field[@name='probability']" position="attributes">
+                <attribute name="readonly">True</attribute>
+            </xpath>
+            <xpath expr="//group[@name='opportunity_partner']/field[@name='partner_id']" position="attributes">
+                <attribute name="string">Partner</attribute>
+            </xpath>
+           
+          
+
+
+
+            
+            
+        </field>
+    </record>
+</odoo>

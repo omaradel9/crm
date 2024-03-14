@@ -1,0 +1,49 @@
+<odoo>
+    <data noupdate="0">
+        <record id="view_order_dublicate_form_inherit" model="ir.ui.view">
+            <field name="name">view.order.dublicate.form.inherit</field>
+            <field name="model">sale.order</field>
+            <field name="inherit_id" ref="sale.view_order_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//header/button[@name='action_confirm'][1]" position="after">
+                    <button name="action_dublicate_quotation" type="object" string="New Version" class="btn-primary" />
+
+                   
+                    
+                </xpath>
+                <xpath expr="//field[@name='partner_id']" position="after">
+                    <field name="parent_porposal_id" />
+                    <field name="dublicated_counter" 
+                    invisible="1"
+                     />
+                    
+                    
+
+                </xpath>
+
+                <div name="button_box" position="inside">
+                    <button name="action_preview_dublicated_quotation" type="object" class="oe_stat_button" icon="fa-sitemap">
+                        <div class="o_field_widget o_stat_info">
+                            <field name="dublicated_counter"  class="o_stat_value" 
+                            readonly="1"
+                            />
+                            <span class="o_stat_text">Versions</span>
+                        </div>
+                    </button>
+                   
+                </div>
+
+               
+               
+               
+                
+                
+            </field>
+        </record>
+    
+        
+    
+    </data>
+    
+   
+</odoo>

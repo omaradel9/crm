@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="quick_create_opportunity_form_inherit" model="ir.ui.view">
+        <field name="name">quick.create.opportunity.form.inherit</field>
+        <field name="model">crm.lead</field>
+        <field name="inherit_id" ref="crm.quick_create_opportunity_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='partner_id']" position="attributes">
+                <attribute name="string">Partner</attribute>
+            </xpath>
+          
+            <xpath expr="//field[@name='partner_id']" position="after">
+                <xpath expr="//field[@name='email_from']" position="move"/>
+            </xpath> 
+            <xpath expr="//field[@name='name']" position="attributes">
+                <attribute name="string">Opportunity Name</attribute>
+            </xpath>
+            
+          
+         
+         
+         
+        </field>
+    </record>
+    <record id="crm_lead_view_form_inherit" model="ir.ui.view">
+        <field name="name">crm.lead.view.form.inherit</field>
+        <field name="model">crm.lead</field>
+        <field name="inherit_id" ref="crm.crm_lead_view_form"/>
+        <field name="arch" type="xml">
+        
+            <xpath expr="//group[@name='opportunity_partner']/field[@name='partner_id']" position="attributes">
+                <attribute name="context">
+                    {'default_customer': True}
+                </attribute>
+            </xpath>
+            <xpath expr="//label[@for='email_from']" position="attributes">
+                <attribute name="invisible">True</attribute>
+              
+            </xpath>
+            <xpath expr="//label[@for='phone']" position="attributes">
+                <attribute name="invisible">True</attribute>
+              
+            </xpath>
+
+            <xpath expr="//group[@name='opportunity_partner']/field[@name='partner_id']" position="after">
+                <xpath expr="//field[@name='email_from']" position="move"/>
+                <xpath expr="//field[@name='phone']" position="move"/>
+
+
+            </xpath>
+            <xpath expr="//field[@name='vendor_id']" position="after">
+                <field name="vendor_account_manager" context="{'default_parent_id': vendor_id}" domain="[ ('parent_id', '=', vendor_id)]"/>
+
+
+            </xpath>
+            <xpath expr="//field[@name='vendor_id']" position="attributes">
+                <attribute name="context">
+                    {'default_vendor': True}
+                </attribute>
+                <attribute name="domain">
+                    [ ('vendor', '=', True)]
+                </attribute>
+                
+            </xpath> 
+            <xpath expr="//field[@name='end_user_id']" position="attributes">
+                <attribute name="context">
+                    {'default_end_user': True}
+                </attribute>
+                <attribute name="domain">
+                    [ ('end_user', '=', True)]
+
+                </attribute>
+            </xpath>
+           
+          
+
+
+
+            
+            
+        </field>
+    </record>
+
+</odoo>

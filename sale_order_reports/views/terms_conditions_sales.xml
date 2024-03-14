@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+
+       <record id="terms_conditions_view_tree" model="ir.ui.view">
+        <field name="name">terms.conditions.view.tree</field>
+        <field name="model">terms.condtions.sales</field>
+        <field name="arch" type="xml">
+            <tree string="terms and condtions">
+                <field name="name" />
+                <field name="offer_validity" />
+                <field name='prices' />
+                <field name='delivery' />
+                <field name='partial_delivery' />
+                <field name='responsibility' />
+                <field name='required_information' />
+                
+            </tree>
+        </field>
+       </record>
+
+        
+
+   
+
+        <record id="terms_conditions_view_form" model="ir.ui.view">
+            <field name="name">terms.conditions.view.form</field>
+            <field name="model">terms.condtions.sales</field>
+            <field name="arch" type="xml">
+                <form string="terms and condtions">
+                    <sheet>
+                        <group>
+                            <field name="name" />
+                            <field name="offer_validity" />
+                            <field name='prices' />
+                            <field name='payment' invisible="1"/>
+                            <field name='delivery' />
+                            <field name='partial_delivery' />
+                            <field name='responsibility' />
+                            <field name='required_information' />
+                            
+                            
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        
+        
+      
+      
+        <record id="terms_conditions_menu_action" model="ir.actions.act_window">
+            <field name="name">Terms and Conditions</field>
+            <field name="res_model">terms.condtions.sales</field>
+            <field name="view_mode">tree,form</field>
+        </record> 
+
+
+        <menuitem id="terms_conditions_menu" name="Terms and Conditions" parent="sale.sale_order_menu" action="terms_conditions_menu_action" />
+    </data>
+</odoo>

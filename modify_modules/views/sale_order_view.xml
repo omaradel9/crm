@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+
+    <record id="view_order_form_inherit" model="ir.ui.view">
+        <field name="name">view.order.form.inherit</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.view_order_form"/>
+        <field name="arch" type="xml">
+          
+         
+            <xpath expr="//field[@name='term_conditions_id']" position="attributes">
+                <attribute name="string">Terms and Conditions</attribute>
+            </xpath>
+            <xpath expr="//field[@name='payment_term_id']" position="after">
+                <field name="margin" />
+                
+            </xpath>
+            <xpath expr="//field[@name='vendor_id']" position="after">
+                <field name="vendor_account_manager" />
+                
+            </xpath>
+            <xpath expr="//field[@name='name']" position="after">
+                <field name="current_company_brands" 
+                invisible="1"
+                />
+            </xpath>
+            <xpath expr="//field[@name='order_line']/tree/field[@name='product_uom_qty']" position="after">
+                <field name="smart_account_mandatory" optional="hide"/>
+                <field name="cisco_product_ref" attrs="{'column_invisible': [('parent.current_company_brands','!=','cisco')]}" optional="hide"/>
+                <field name="product_family" optional="hide" />
+                <field name="estimated_lead_time" optional="hide"/>
+                <field name="cost" optional="hide" />
+                <field name="pricing_term"  optional="hide"/>
+                
+            </xpath>
+
+            
+          
+            
+           
+          
+
+
+
+            
+            
+        </field>
+    </record>
+</odoo>

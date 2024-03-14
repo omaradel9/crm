@@ -1,0 +1,2 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_terms_condtions_sales_model_admin,access.terms.condtions.sales.model.admin,sale_order_reports.model_terms_condtions_sales,term_conditions_page.group_terms_and_conditions,1,1,1,1

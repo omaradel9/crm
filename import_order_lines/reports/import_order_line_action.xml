@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+ 
+
+    <report
+                id="custom_import_line_action_report_xlsx"
+                model="sale.order"
+                string="Import order lines"
+                report_type="xlsx"
+                name="import_order_lines.custom_import_line_report_xlsx"
+                file="Import order lines"
+                attachment_use="False"
+                menu="False"
+
+        />
+
+</odoo>

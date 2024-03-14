@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="crm_attachment_view_tree" model="ir.ui.view">
+        <field name="name">crm.attachment.view.tree</field>
+        <field name="model">crm.attachments</field>
+        <field name="arch" type="xml">
+            <tree string="">
+                <!-- <field name="activity_id" /> -->
+                <field name="name"  />
+                <field name="attachment" filename = "name"/>
+                
+            </tree>
+        </field>
+    </record>
+
+
+
+    <record id="crm_attachment_view_form" model="ir.ui.view">
+        <field name="name">crm.attachment.view.form</field>
+        <field name="model">crm.attachments</field>
+        <field name="arch" type="xml">
+            <form string="">
+                <sheet>
+                    <group>
+                        <!-- <field name="activity_id" 
+                        readonly="1"
+                        /> -->
+                        <field name="name" 
+                        invisible="1"
+                        />
+                        <field name="attachment" filename = "name" />
+                        
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+    
+    <record id="action_crm_attachment" model="ir.actions.act_window">
+
+        <field name="name">Crm Activity</field>
+        <field name="res_model">crm.attachments</field>
+        <field name="view_mode">tree,form</field>
+    
+    </record>
+
+    <menuitem id="crm_attachment_menu" name="Activity Attachment" parent="crm.crm_menu_report" action="action_crm_attachment" />
+    
+
+  
+
+
+
+</odoo>

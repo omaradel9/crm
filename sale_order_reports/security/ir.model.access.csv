@@ -1,0 +1,3 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_brand_model,access.brand.model,model_brand,base.group_user,1,1,1,1
+access_terms_condtions_sales_model,access.terms.condtions.sales.model,model_terms_condtions_sales,base.group_user,1,0,0,0

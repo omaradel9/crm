@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <template id="custom_sale_order_action_report_pdf_inherit" name="custom_sale_order_action_report_pdf_inherit" inherit_id="sale_order_reports.custom_sale_order_action_report_pdf">
+        <xpath expr="//div[hasclass('terms_conditions')]" position="replace">
+            <div class="terms_conditions" style="margin-top:30px">
+                <div class="hedaer_terms">
+                    <h2>Terms and Conditions:</h2>
+
+                </div>
+                <div class="content_terms">
+                    <div style="margin-bottom:15px">
+                        <t t-if="doc.term_conditions_id.offer_validity">
+                            <p style="display: inline; font-weight: bold;color:#2d2d85; font-size:20px">Offer Validity: </p>
+                            <span style="display: inline;color:#2d2d85; font-size:20px"><t t-esc="doc.offer_validity"/></span> 
+                            
+                        </t>
+                    </div>
+                    <div style="margin-bottom:15px">
+                        <t t-if="doc.term_conditions_id.prices">
+                            <p style="display: inline; font-weight: bold;color:#2d2d85; font-size:20px">Prices:</p>
+                            <span style="display: inline;color:#2d2d85; font-size:20px"><t t-esc="doc.prices"/></span> 
+                            
+                        </t>
+
+                    </div>
+                    <div style="margin-bottom:15px">
+                        <t t-if="doc.term_conditions_id.payment">
+                            <p style="display: inline; font-weight: bold;color:#2d2d85; font-size:20px">Payment:</p>
+                            <span style="display: inline;color:#2d2d85;font-size:20px"><t t-esc="doc.payment_term_id.note"/></span> 
+                            
+                        </t>
+
+                    </div>
+                    <div style="margin-bottom:15px">
+                        <t t-if="doc.term_conditions_id.delivery">
+                            <p style="display: inline; font-weight: bold;color:#2d2d85; font-size:20px">Delivery:</p>
+                            <span style="display: inline;color:#2d2d85; font-size:20px"><t t-esc="doc.delivery"/></span>
+                            
+                        </t>
+
+                    </div>
+                    <div style="margin-bottom:15px">
+                        <t t-if="doc.term_conditions_id.partial_delivery">
+                            <p style="display: inline; font-weight: bold;color:#2d2d85;font-size:20px">Partial Delivery:</p>
+                            <span style="display: inline;color:#2d2d85;font-size:20px"><t t-esc="doc.partial_delivery"/></span> 
+                            
+                        </t>
+
+                    </div>
+                    <div style="margin-bottom:15px">
+                        <t t-if="doc.term_conditions_id.responsibility">
+                            <p style="display: inline; font-weight: bold; color:#2d2d85;font-size:20px">Responsibility:</p>
+                            <span style="display: inline; color:#2d2d85;font-size:20px"><t t-esc="doc.responsibility"/></span> 
+                            
+                        </t>
+
+                    </div>
+                    <div style="margin-bottom:15px;">
+                        <t t-if="doc.term_conditions_id.required_information">
+                            <p style="display: inline; font-weight: bold;color:#2d2d85;font-size:20px">Required Information:</p>
+                            <span style="display: inline;color:#2d2d85;font-size:20px"><t t-esc="doc.required_information"/></span> 
+                            
+                        </t>
+
+                    </div>
+                
+                
+                
+                
+                    
+                
+                    
+                
+                
+                    
+                
+                
+                    
+                
+
+                </div>
+
+            </div>
+
+            
+        </xpath>
+    </template>
+
+</odoo>

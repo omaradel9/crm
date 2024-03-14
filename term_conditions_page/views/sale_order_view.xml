@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+
+    <record id="view_order_form_inherit" model="ir.ui.view">
+        <field name="name">view.order.form.inherit</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.view_order_form"/>
+        <field name="arch" type="xml">
+          
+         
+            <xpath expr="//page[@name='customer_signature']" position="replace">
+                <page name="terms_and_conditions" string="Terms and Conditions">
+                    <group string="Terms and Conditions">
+                        <group >
+                            <field name="offer_validity" />
+                            <field name="prices" />
+                            <field name="delivery" />
+                            
+                        </group>
+                        <group >
+                            <field name="partial_delivery" />
+                            <field name="responsibility" />
+                            <field name="required_information" />
+                            
+                        </group>
+                        
+                    </group>
+                  
+                    
+                </page>
+            </xpath>
+            <xpath expr="//field[@name='vendor_account_manager']" position="attributes">
+                <field name="vendor_account_manager" context="{'default_parent_id': vendor_id}" domain="[ ('parent_id', '=', vendor_id)]"/>
+
+
+            </xpath>
+            <xpath expr="//field[@name='vendor_account_manager']" position="attributes">
+                <attribute name="context">
+                    {'default_parent_id': vendor_id}
+                </attribute>
+                <attribute name="domain">
+                    [ ('parent_id', '=', vendor_id)]
+                </attribute>
+                
+            </xpath>
+            <xpath expr="//field[@name='vendor_id']" position="attributes">
+                <attribute name="context">
+                    {'default_vendor': True}
+                </attribute>
+                <attribute name="domain">
+                    [ ('vendor', '=', True)]
+
+                </attribute>
+                
+            </xpath> 
+            <xpath expr="//field[@name='end_user_id']" position="attributes">
+                <attribute name="context">
+                    {'default_end_user': True}
+                </attribute>
+                <attribute name="domain">
+                    [ ('end_user', '=', True)]
+                    
+                </attribute>
+                
+            </xpath>
+            <xpath expr="//field[@name='contact_person']" position="attributes">
+                <attribute name="context">
+                    {'default_parent_id': partner_id}
+                </attribute>
+                <attribute name="domain">
+                    [ ('parent_id', '=', partner_id)]
+                </attribute>
+                
+            </xpath> 
+            <xpath expr="//field[@name='product_template_id']" position="attributes">
+                <attribute name="string">
+                    MPN
+                </attribute>
+             
+                
+            </xpath> 
+            <xpath expr="//field[@name='name']" position="attributes">
+                <attribute name="string">
+                    Product Description
+                </attribute>
+             
+                
+            </xpath>  
+            <xpath expr="//field[@name='duration']" position="attributes">
+                <attribute name="string">
+                    Service Duration (Months)
+                </attribute>
+             
+                
+            </xpath>  
+            <xpath expr="//field[@name='price_unit']" position="attributes">
+                <attribute name="string">
+                    Unit Net Price
+                </attribute>
+             
+                
+            </xpath>  
+            <xpath expr="//field[@name='price_subtotal']" position="attributes">
+                <attribute name="string">
+                    Total Price
+                </attribute>
+             
+                
+            </xpath>  
+            <xpath expr="//field[@name='discount_metra']" position="attributes">
+                <attribute name="string">
+                    Discount (%)
+                </attribute>
+             
+                
+            </xpath>  
+            
+
+            
+          
+            
+           
+          
+
+
+
+            
+            
+        </field>
+    </record>
+</odoo>

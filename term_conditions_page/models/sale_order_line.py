@@ -42,7 +42,7 @@ class SaleOrder(models.Model):
         store=True, precompute=True)
     
 
-    discount_metra = fields.Float('Discount (%)')
+    discount_metra = fields.Float('Vendor Discount (%)')
 
 
 

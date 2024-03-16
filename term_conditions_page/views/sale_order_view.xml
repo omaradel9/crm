@@ -110,7 +110,7 @@
             </xpath>  
             <xpath expr="//field[@name='discount_metra']" position="attributes">
                 <attribute name="string">
-                    Discount (%)
+                    Vendor Discount (%)
                 </attribute>
              
                 

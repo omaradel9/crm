@@ -57,6 +57,6 @@
         </record> 
 
 
-        <menuitem id="terms_conditions_menu" name="Terms and Conditions" parent="sale.sale_order_menu" action="terms_conditions_menu_action" />
+        <menuitem id="terms_conditions_menu" name="Terms and Conditions" parent="sale.menu_sale_config" action="terms_conditions_menu_action" />
     </data>
 </odoo>

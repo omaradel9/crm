@@ -2,7 +2,7 @@
 <odoo>
 
     <record id="group_terms_and_conditions" model="res.groups">
-        <field name="name">Admin</field>
+        <field name="name">Terms and Condition Admin</field>
         <field name="category_id" ref="base.module_category_sales_sales"/>
     </record>
 

@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <template id="custom_edit_sale_order_action_report_pdf_inherit" name="custom_edit_sale_order_action_report_pdf_inherit" inherit_id="term_conditions_page.custom_sale_order_action_report_pdf_inherit">
+        <xpath expr="//div[hasclass('terms_conditions')]" position="replace">
+            <div class="terms_conditions" style="margin-top:30px">
+                <div class="content_terms">
+                    <div style="margin-bottom:15px">
+                        <t t-if="doc.pricelist_id.currency_id">
+                            <p style="display: inline; font-weight: bold;color:#2d2d85; font-size:20px; padding:5px">Currency: </p>
+                            <span style="display: inline;color:#2d2d85; font-size:20px; padding:5px"><t t-esc="doc.pricelist_id.currency_id.name"/></span> 
+                            
+                        </t>
+                    </div>
+                    <div style="margin-bottom:15px">
+                        <t t-if="doc.amount_total">
+                            <p style="display: inline; font-weight: bold;color:#2d2d85; font-size:20px; padding:5px">Total in Word:</p>
+                            <span style="display: inline;color:#2d2d85; font-size:18px; padding:5px"><t t-esc="doc.compute_total_text()"/></span> 
+                            
+                        </t>
+
+                    </div>
+                    <div style="margin-bottom:15px">
+                        <t t-if="doc.payment_term_id">
+                            <p style="display: inline; font-weight: bold;color:#2d2d85; font-size:20px;">Payment Terms:</p>
+                            <span style="display: inline;color:#2d2d85;font-size:20px;"><t t-raw="doc.payment_term_id.note"/></span> 
+                            
+                        </t>
+
+                    </div>
+                    <div style="margin-bottom:15px">
+                        <t t-if="doc.payment_method">
+                            <p style="display: inline; font-weight: bold;color:#2d2d85; font-size:20px; padding:5px">Payment Method:</p>
+                            <span style="display: inline;color:#2d2d85; font-size:20px; padding:5px"><t t-esc="doc.payment_method"/></span>
+                            
+                        </t>
+
+                    </div>
+                    <div style="margin-bottom:15px">
+                        <t t-if="doc.incoterms">
+                            <p style="display: inline; font-weight: bold;color:#2d2d85;font-size:20px; padding:5px">Incoterms:</p>
+                            <span style="display: inline;color:#2d2d85;font-size:20px; padding:5px"><t t-esc="doc.incoterms"/></span> 
+                            
+                        </t>
+
+                    </div>
+                    <div style="margin-bottom:15px">
+                        <t t-if="doc.delivery_location">
+                            <p style="display: inline; font-weight: bold; color:#2d2d85;font-size:20px; padding:5px">Delivery Location:</p>
+                            <span style="display: inline; color:#2d2d85;font-size:20px; padding:5px"><t t-esc="doc.delivery_location"/></span> 
+                            
+                        </t>
+
+                    </div>
+                    <div style="margin-bottom:15px;">
+                        <t t-if="doc.mode_of_shipment">
+                            <p style="display: inline; font-weight: bold;color:#2d2d85;font-size:20px; padding:5px">Mode of Shipment:</p>
+                            <span style="display: inline;color:#2d2d85;font-size:20px; padding:5px"><t t-esc="doc.mode_of_shipment"/></span> 
+                            
+                        </t>
+
+                    </div>
+                    <div style="margin-bottom:15px;">
+                        <t t-if="doc.end_user_id">
+                            <p  style="display: inline; font-weight: bold;color:#2d2d85;font-size:20px; padding:5px">End Customer:</p>
+                            <span  style="display: inline;color:#2d2d85;font-size:20px; padding:5px"><t t-esc="doc.end_user_id.name"/></span> 
+                            
+                        </t>
+
+                    </div>
+                
+                
+                
+                
+                    
+                
+                    
+                
+                
+                    
+                
+                
+                    
+                
+
+                </div>
+
+            </div>
+            <div class="p_end">
+                <p>
+                    These commodities, technology or software were exported in accordance with the US Export Administration Regulations. Diversion contrary to U.S. law prohibited. The
+purchaser agrees to indemnify the seller and hold the seller harmless from and against all claims, liability, and obligation whatsoever (including, but not limited to, reasonable
+attorneys' fees) arising out of the transfer of these commodities across national boundaries without proper government licenses and authorizations. Reexport/retransfer
+without prior authorization from the US Bureau of Export Administration is prohibited. Export, reexport, sale or retransfer to military end-users or end-uses in prohibited
+destinations and proliferation end-users and end-uses is strictly prohibited without prior authorization from the US government
+                </p>
+                <p>
+                    You agree that you have reviewed the Metra Standard terms and conditions of sale and that your purchase is subject to these T's and C's.
+                </p>
+                <p>
+                    This document is Metra's system generated Document and does not require anyone signature nor Metra's stamp on it.
+                </p>
+
+            </div>
+
+            
+        </xpath>
+    </template>
+
+</odoo>

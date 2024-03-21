@@ -7,23 +7,23 @@
                 <div class="content_terms">
                     <div style="margin-bottom:0px; padding:0px">
                         <t t-if="doc.pricelist_id.currency_id">
-                            <p style="display: inline; font-weight: bold;color:#2d2d85;  padding:5px">Currency: </p>
-                            <span style="display: inline;color:#2d2d85;  padding:5px"><t t-esc="doc.pricelist_id.currency_id.name"/></span> 
+                            <p style="display: inline; font-weight: bold;  padding:5px">Currency: </p>
+                            <span style="display: inline; padding:5px"><t t-esc="doc.pricelist_id.currency_id.name"/></span> 
                             
                         </t>
                     </div>
                     <div style="margin-bottom:0px; padding:0px">
                         <t t-if="doc.amount_total">
-                            <p style="display: inline; font-weight: bold;color:#2d2d85;  padding:5px">Total in Word:</p>
-                            <span style="display: inline;color:#2d2d85;  padding:5px"><t t-esc="doc.compute_total_text()"/></span> 
+                            <p style="display: inline; font-weight: bold;padding:5px">Total in Word:</p>
+                            <span style="display: inline;padding:5px"><t t-esc="doc.compute_total_text()"/></span> 
                             
                         </t>
 
                     </div>
                     <div style="margin-bottom:0px; padding:0px">
                         <t t-if="doc.payment_term_id">
-                            <p style="display: inline; font-weight: bold;color:#2d2d85; ">Payment Terms:</p>
-                            <span style="display: inline;color:#2d2d85;"><t t-raw="doc.payment_term_id.note"/></span> 
+                            <p style="display: inline; font-weight: bold;">Payment Terms:</p>
+                            <span style="display: inline;"><t t-raw="doc.payment_term_id.note"/></span> 
                             
                         </t>
 
@@ -31,40 +31,40 @@
                 
                     <div style="margin-bottom:0px; padding:0px">
                         <t t-if="doc.payment_method">
-                            <p style="display: inline; font-weight: bold;color:#2d2d85;  padding:5px">Payment Method:</p>
-                            <span style="display: inline;color:#2d2d85;  padding:5px"><t t-esc="doc.payment_method"/></span>
+                            <p style="display: inline; font-weight: bold;  padding:5px">Payment Method:</p>
+                            <span style="display: inline;padding:5px"><t t-esc="doc.payment_method"/></span>
                             
                         </t>
 
                     </div>
                     <div style="margin-bottom:0px; padding:0px">
                         <t t-if="doc.incoterms">
-                            <p style="display: inline; font-weight: bold;color:#2d2d85; padding:5px">Incoterms:</p>
-                            <span style="display: inline;color:#2d2d85;padding:5px"><t t-esc="doc.incoterms"/></span> 
+                            <p style="display: inline; font-weight: bold; padding:5px">Incoterms:</p>
+                            <span style="display: inline;padding:5px"><t t-esc="doc.incoterms"/></span> 
                             
                         </t>
 
                     </div>
                     <div style="margin-bottom:0px; padding:0px">
                         <t t-if="doc.delivery_location">
-                            <p style="display: inline; font-weight: bold; color:#2d2d85; padding:5px">Delivery Location:</p>
-                            <span style="display: inline; color:#2d2d85; padding:5px"><t t-esc="doc.delivery_location"/></span> 
+                            <p style="display: inline; font-weight: bold;padding:5px">Delivery Location:</p>
+                            <span style="display: inline;padding:5px"><t t-esc="doc.delivery_location"/></span> 
                             
                         </t>
 
                     </div>
                     <div style="margin-bottom:0px; padding:0px">
                         <t t-if="doc.mode_of_shipment">
-                            <p style="display: inline; font-weight: bold;color:#2d2d85; padding:5px">Mode of Shipment:</p>
-                            <span style="display: inline;color:#2d2d85; padding:5px"><t t-esc="doc.mode_of_shipment"/></span> 
+                            <p style="display: inline; font-weight: bold;padding:5px">Mode of Shipment:</p>
+                            <span style="display: inline; padding:5px"><t t-esc="doc.mode_of_shipment"/></span> 
                             
                         </t>
 
                     </div>
                     <div style="margin-bottom:5px; padding:0px">
                         <t t-if="doc.end_user_id">
-                            <p  style="display: inline; font-weight: bold;color:#2d2d85; padding:5px">End Customer:</p>
-                            <span  style="display: inline;color:#2d2d85;padding:5px"><t t-esc="doc.end_user_id.name"/></span> 
+                            <p  style="display: inline; font-weight: bold;padding:5px">End Customer:</p>
+                            <span  style="display: inline;padding:5px"><t t-esc="doc.end_user_id.name"/></span> 
                             
                         </t>
 

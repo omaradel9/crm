@@ -5,7 +5,7 @@
         <xpath expr="//div[hasclass('terms_conditions')]" position="replace">
             <div class="terms_conditions" style="margin-top:30px">
                 <div class="content_terms">
-                    <div style="margin-bottom:0px; padding:0px">
+                    <!-- <div style="margin-bottom:0px; padding:0px">
                         <t t-if="doc.pricelist_id.currency_id">
                             <p style="display: inline; font-weight: bold;  padding:5px">Currency: </p>
                             <span style="display: inline; padding:5px"><t t-esc="doc.pricelist_id.currency_id.name"/></span> 
@@ -19,56 +19,141 @@
                             
                         </t>
 
-                    </div>
-                    <div style="margin-bottom:0px; padding:0px">
+                    </div> -->
+                  
+                    <!-- <div style="margin-bottom:0px; padding:0px">
                         <t t-if="doc.payment_term_id">
-                            <p style="display: inline; font-weight: bold;">Payment Terms:</p>
-                            <span style="display: inline;"><t t-raw="doc.payment_term_id.note"/></span> 
+                            <p style="display: inline; font-weight: bold;padding:5px">Payment Terms:</p>
+                            <span style="display: inline;padding:5px" t-raw="doc.payment_term_id.note"></span> 
                             
                         </t>
 
-                    </div>
+                    </div> -->
+                    <table style="margin:0px; padding:0px ; width:100%;border:5px solid white;">
+                        <tr style="margin:0px; padding:0px">
+                            <th style="margin:0px;padding:0px;text-align:left">
+                                Currency:
+
+                            </th>
+                            <td style="margin:0px; padding-left:3px;text-align:left" colspan="6">
+                                <span style="display: inline; padding:5px"><t t-esc="doc.pricelist_id.currency_id.name"/></span> 
+                            </td>
+                         
+                        </tr>
+                        <tr style="margin:0px; padding:0px">
+                            <th style="margin-left:20px;margin-bottom:0px;padding:0px; width:120px; text-align:left">
+                                Total in Word:
+
+                            </th>
+                            <td style="margin:0px; padding-left:3px;text-align:left;white-space: nowrap;" colspan="6">
+                                <span style="display: inline;padding:5px"><t t-esc="doc.compute_total_text()"/></span> 
+                            </td>
+                         
+                        </tr>
+                      
+                        <tr style="margin:0px; padding:0px">
+                            <th style="margin-left:20px;margin-bottom:0px;padding:0px; width:120px; text-align:left">
+                                Incoterms:
+
+                            </th>
+                            <td style="margin:0px; padding-left:3px;width:400px;text-align:left" colspan="6">
+                                <span style="display: inline;padding:5px"><t t-esc="doc.incoterms"/></span> 
+                            </td>
+                         
+                        </tr>
+                        <tr style="margin:0px; padding:0px">
+                            <th style="margin-left:20px;margin-bottom:0px;padding:0px; width:120px; text-align:left">
+                                Delivery Location:
+
+                            </th>
+                            <td style="margin:0px; padding-left:3px;width:400px;text-align:left" colspan="6">
+                                <span style="display: inline;padding:5px"><t t-esc="doc.delivery_location"/></span> 
+                            </td>
+                         
+                        </tr>
+                        <tr style="margin:0px; padding:0px">
+                            <th style="margin-left:20px;margin-bottom:0px;padding:0px; width:120px; text-align:left">
+                                Mode of Shipment:
+
+                            </th>
+                            <td style="margin:0px; padding-left:3px;width:400px;text-align:left" colspan="6">
+                                <span style="display: inline; padding:5px"><t t-esc="doc.mode_of_shipment"/></span> 
+                            </td>
+                         
+                        </tr>
+                        <tr style="margin:0px; padding:0px">
+                            <th style="margin-left:20px;margin-bottom:0px;padding:0px; width:120px; text-align:left">
+                                End Customer:
+
+                            </th>
+                            <td style="margin:0px; padding-left:3px;width:400px;text-align:left" colspan="6">
+                                <span  style="display: inline;padding:5px"><t t-esc="doc.end_user_id.name"/></span> 
+                            </td>
+                         
+                        </tr>
+                        <tr style="margin:0px; padding:0px">
+                            <th style="margin-left:20px;margin-bottom:0px;padding:0px; width:120px; text-align:left">
+                                Payment Method:
+
+                            </th>
+                            <td style="margin:0px; padding-left:3px;width:400px;text-align:left" colspan="6">
+                                <span style="display: inline;padding:5px"><t t-esc="doc.payment_method"/></span>
+                            </td>
+                         
+                        </tr>
+                        <tr style="margin:0px; padding:0px">
+                            <th style="margin-left:20px;margin-bottom:0px;padding:0px; width:140px; text-align:left">
+                                Payment Terms:
+
+                            </th>
+                            <td style="margin:0px; padding-left:3px;width:400px;text-align:left" colspan="6">
+                                <span style="margin:0px; padding:0px" t-raw="doc.payment_term_id.note"></span>
+                            </td>
+                         
+                        </tr>
+                      
+                    </table>
                 
-                    <div style="margin-bottom:0px; padding:0px">
+                    <!-- <div style="margin-bottom:0px;margin-top:0px; padding:0px">
                         <t t-if="doc.payment_method">
                             <p style="display: inline; font-weight: bold;  padding:5px">Payment Method:</p>
                             <span style="display: inline;padding:5px"><t t-esc="doc.payment_method"/></span>
                             
                         </t>
 
-                    </div>
-                    <div style="margin-bottom:0px; padding:0px">
+                    </div> -->
+                    <!-- <div style="margin-bottom:0px; padding:0px">
                         <t t-if="doc.incoterms">
                             <p style="display: inline; font-weight: bold; padding:5px">Incoterms:</p>
                             <span style="display: inline;padding:5px"><t t-esc="doc.incoterms"/></span> 
                             
                         </t>
 
-                    </div>
-                    <div style="margin-bottom:0px; padding:0px">
+                    </div> -->
+                    <!-- <div style="margin-bottom:0px; padding:0px">
                         <t t-if="doc.delivery_location">
                             <p style="display: inline; font-weight: bold;padding:5px">Delivery Location:</p>
                             <span style="display: inline;padding:5px"><t t-esc="doc.delivery_location"/></span> 
                             
                         </t>
 
-                    </div>
-                    <div style="margin-bottom:0px; padding:0px">
+                    </div> -->
+                    <!-- <div style="margin-bottom:0px; padding:0px">
                         <t t-if="doc.mode_of_shipment">
                             <p style="display: inline; font-weight: bold;padding:5px">Mode of Shipment:</p>
                             <span style="display: inline; padding:5px"><t t-esc="doc.mode_of_shipment"/></span> 
                             
                         </t>
 
-                    </div>
-                    <div style="margin-bottom:5px; padding:0px">
+                    </div> -->
+                    <!-- <div style="margin-bottom:5px; padding:0px">
                         <t t-if="doc.end_user_id">
                             <p  style="display: inline; font-weight: bold;padding:5px">End Customer:</p>
                             <span  style="display: inline;padding:5px"><t t-esc="doc.end_user_id.name"/></span> 
                             
                         </t>
 
-                    </div>
+                    </div> -->
                 
                 
                 

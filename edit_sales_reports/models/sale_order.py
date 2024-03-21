@@ -13,6 +13,15 @@ class SaleOrder(models.Model):
 
     payment_method = fields.Text('Payment Method')
     incoterms = fields.Text('Incoterms')
+    user_id = fields.Many2one(
+        comodel_name='res.users',
+        string="Salesperson",
+        compute='_compute_user_id',
+        store=True, readonly=False,required=True, precompute=True, index=True,
+        tracking=2,
+        domain=lambda self: "[('groups_id', '=', {}), ('share', '=', False), ('company_ids', '=', company_id)]".format(
+            self.env.ref("sales_team.group_sale_salesman").id
+        ))
 
 
 

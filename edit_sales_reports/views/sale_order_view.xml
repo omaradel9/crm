@@ -27,7 +27,44 @@
             </xpath>
             <xpath expr="//field[@name='required_information']" position="after">
                 <field name="payment_method" />
-              </xpath>
+            </xpath>
+            <xpath expr="//field[@name='user_id']" position="attributes">
+                <attribute name="required">True</attribute>
+            </xpath>
+            <xpath expr="//field[@name='payment_term_id']" position="attributes">
+                <attribute name="required">True</attribute>
+            </xpath>
+            <xpath expr="//field[@name='validity_date']" position="attributes">
+                <attribute name="required">True</attribute>
+            </xpath>
+            <xpath expr="//field[@name='currency_id']" position="attributes">
+                <attribute name="required">True</attribute>
+            </xpath>
+            <xpath expr="//field[@name='incoterms']" position="attributes">
+                <attribute name="required">True</attribute>
+            </xpath>
+            <xpath expr="//field[@name='delivery_location']" position="attributes">
+                <attribute name="required">True</attribute>
+            </xpath>
+            <xpath expr="//field[@name='offer_validity']" position="attributes">
+                <attribute name="invisible">True</attribute>
+            </xpath>
+            <xpath expr="//field[@name='prices']" position="attributes">
+                <attribute name="invisible">True</attribute>
+            </xpath>
+            <xpath expr="//field[@name='delivery']" position="attributes">
+                <attribute name="invisible" >True</attribute>
+            </xpath>
+            <xpath expr="//field[@name='partial_delivery']" position="attributes">
+                <attribute name="invisible" >True</attribute>
+            </xpath>
+            <xpath expr="//field[@name='responsibility']" position="attributes">
+                <attribute name="invisible" >True</attribute>
+            </xpath>
+            <xpath expr="//field[@name='required_information']" position="attributes">
+                <attribute name="invisible">True</attribute>
+            </xpath>
+
         
             
 

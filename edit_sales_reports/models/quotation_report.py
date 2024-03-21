@@ -18,11 +18,14 @@ class QuotationReportXlsx(models.AbstractModel):
 
 
     def generate_xlsx_report(self, workbook, data, orders):
-        format_1 = workbook.add_format({'bold':True,'align': 'center','bg_color':'gray','font_size':14})
-        format_2 = workbook.add_format({'bold':True,'align': 'center','bg_color':'gray','font_size':12,})
-        format_3 = workbook.add_format({'bold':True,'font_size':12,'underline':True})
+        format_1 = workbook.add_format({'bold':True,'align': 'center','bg_color':'#D3D3D3','font_size':14})
+        format_2 = workbook.add_format({'bold':True,'align': 'center','bg_color':'#D3D3D3','font_size':12,})
+        # format_3 = workbook.add_format({'bold':True,'font_size':12,'underline':True})
+        format_3 = workbook.add_format({'bold':True,'align': 'left','bg_color':'#D3D3D3','font_size':12,})
+
         format_4 = workbook.add_format({'bold':True,'font_size':11,'text_wrap': True})
         format_5 = workbook.add_format({'font_size':11,'text_wrap': True})
+        format_6 = workbook.add_format({'bold':True,'font_size':11,'text_wrap': True})
 
 
 
@@ -69,11 +72,11 @@ class QuotationReportXlsx(models.AbstractModel):
         table_row = 14
       
         for obj in orders:
-            sheet.insert_image(0,1, get_module_resource('sale_order_reports', 'static/src/img', 'metra.png'))
+            sheet.insert_image(2,1, get_module_resource('sale_order_reports', 'static/src/img', 'Metra_logo_navy_RGB.png'),{'x_scale': 0.2, 'y_scale': 0.2})
 
             if obj.brand_id.image:
                 brand_image = io.BytesIO(base64.b64decode(obj.brand_id.image))
-                sheet.insert_image(0,8,"image.png",{'image_data':brand_image,'x_scale':0.5,'y_scale':0.4})
+                sheet.insert_image(2,8,"image.png",{'image_data':brand_image,'x_scale':0.5,'y_scale':0.4})
 
 
             row +=1
@@ -135,7 +138,7 @@ class QuotationReportXlsx(models.AbstractModel):
                
                 index +=1
 
-            sheet.merge_range(table_row,0,table_row,7,'Sub Totals In USD Excluding VAT',format_2)
+            sheet.merge_range(table_row,0,table_row,7,'Sub Totals In USD Excluding VAT',format_3)
             sheet.write(table_row, 8,obj.amount_untaxed or "", currency)
 
             table_row += 1
@@ -144,13 +147,13 @@ class QuotationReportXlsx(models.AbstractModel):
             else:
                     vat_str = f'Value-Added Tax (VAT) (0)'
          
-            sheet.merge_range(table_row,0,table_row,7,vat_str,format_2) 
+            sheet.merge_range(table_row,0,table_row,7,vat_str,format_3) 
             sheet.write(table_row, 8,obj.amount_tax or "", currency)
            
             table_row += 1
             
             
-            sheet.merge_range(table_row,0,table_row,7,'Total Prices In USD Including VAT',format_2)  
+            sheet.merge_range(table_row,0,table_row,7,'Total Prices In USD Including VAT',format_3)  
             sheet.write(table_row, 8,obj.amount_total or "", currency) 
 
             table_row += 1
@@ -160,7 +163,7 @@ class QuotationReportXlsx(models.AbstractModel):
 
 
 
-            sheet.conditional_format(f"A{table_row}:I{table_row+21}",{'type':'formula','criteria': True,'format':white_bg})
+            sheet.conditional_format(f"A{table_row}:I{table_row+55}",{'type':'formula','criteria': True,'format':white_bg})
 
             table_row +=1
             if obj.pricelist_id.currency_id:
@@ -232,4 +235,130 @@ This document is Metra's system generated Document and does not require anyone s
             table_row += 2
 
             sheet.merge_range(table_row, 0, table_row, 8,text_three, format_5)
+            table_row += 2
+
+
+
+            sheet.merge_range(table_row, 0, table_row, 8,'Terms and Conditions', format_6)
+            table_row += 1
+
+            sheet.merge_range(table_row, 0, table_row, 8,'Metra Computer Group', format_6)
+            table_row += 3
+            text_term_one='''Quotations are only valid in writing and during the period that they state. If unstated, the period is 3 days. Please check the
+Order Confirmation and notify Metra of any mistake in writing immediately or the details stated in the Order confirmation
+will apply to this Agreement. All product and pricing information is based on latest information available. Subject to change
+without notice or obligation. The customer cannot cancel or change a Purchase Orders or Order Confirmation sent to Metra.
+The customer/s are obliged to accept the deliveries within (2) calendar days from the time the products are made available at
+the place of delivery stated in the order confirmation. If the customer refuses or delay delivery without Metra's agreement,
+the customer must pay Metra's expenses or loss resulting from that refusal, including storage costs, until you accept delivery.
+Nothing in this agreement affects Metra's right to cancel or reject any order at any time
+'''
+            sheet.merge_range(table_row, 0, table_row, 8,'1. Quotations/Orders/Contract', format_6)
+            table_row += 1
+
+            sheet.merge_range(table_row, 0, table_row, 8,text_term_one, format_5)
+            table_row += 2
+
+            sheet.merge_range(table_row, 0, table_row, 8,'2. Pricing', format_6)
+            table_row += 1
+            text_term_2='''Products and service offering prices, tax, shipment, insurance and installation are as shown on the invoice. Changes to
+exchange rates, duties, insurance, freight, market condition, and purchase costs (incl. for components and Services) may
+cause Metra to adjust prices accordingly.
+'''
+            sheet.merge_range(table_row, 0, table_row, 8,text_term_2, format_5)
+            table_row += 2
+            sheet.merge_range(table_row, 0, table_row, 8,'3. Payment Terms & Payment Obligation', format_6)
+            table_row += 1
+            text_term_3='''
+Payment will be made as agreed in writing by Metra or in absence of such agreement, within 30 days of the invoice date
+without further notice from Metra. Payment timing is of the essence. Metra may suspend deliveries or Service until full
+payment for that order. If payment is late, Metra may charge a late payment charge of 2% monthly accruing on a day-to-day
+basis for each day of late payment, subject to maximum limitation by law, (unless we otherwise elect) on the overdue amount,
+and the costs of recovery shall be payable by the customer. The customer agrees that all invoices and any other amounts due
+under this agreement are payable solely to us in the currency of payment stated above, in full without any set off, counter-
+claims, abatement, or reduction. We may at our sole discretion apply payments made to us (whether by you or otherwise) to
+pay late payment charges, invoices overdue interest, or any outstanding amounts. The customer must pay all sums due to us
+under this agreement including invoices and other charges to us in full, without abatement, discount, reduction, set off,
+dispute or counterclaim. The customer will not assert against Metra any claims the customer may have against any third party
+including the manufacturer or original supplier or shipper of goods. We have no obligation to perform any obligation by any
+third party. Metra may set off against any amounts owed by Metra to the customer any amount dues from the customer to
+Metra (including those prospectively or contingently due where in our reasonable opinion they are likely to become payable)
+'''
+            sheet.merge_range(table_row, 0, table_row, 8,text_term_3, format_5)
+            table_row += 2
+            sheet.merge_range(table_row, 0, table_row, 8,'4. Delivery/Title/Risk', format_6)
+            table_row += 1
+            text_term_4='''
+The Delivery period in the Order Confirmation is approximate. Partial deliveries may be made. The place of delivery is stated
+in the Order Confirmation. Title to Product passes on full payment and until then the customer must insure the goods and the
+customer must not modify or pledge them. The customer may use the goods, without modification, in the ordinary course of
+business. Metra reserves the rights to enter the storage premises to repossess the goods. If the customer sells them before
+title passes, the customer will become Metra's agent and the proceeds of such sale shall be held on Metra's behalf separately
+from the customer's general funds. Metra may sue for the Price before title passes. If the customer refuses delivery without
+Metra's agreement, the customer must pay Metra's expenses or loss resulting from that refusal, including storage costs, until
+the customer accepts delivery. All risk of the loss of the goods passes to the customer upon delivery. Any missing or damaged
+packaging should be noted on the waybill prior to signing it by the customer or its nominated shipping agent.
+'''
+            sheet.merge_range(table_row, 0, table_row, 8,text_term_4, format_5)
+            table_row += 2
+            sheet.merge_range(table_row, 0, table_row, 8,'5. Trade and Import Authorizations', format_6)
+            table_row += 1
+            text_term_5='''
+The customer hereby warrant and represent that the customer have and shall continue to have the due authorizations and
+licenses necessary and required to purchase the Products and any other products purchased from the Supplier and to import
+the same into the relevant country. Any failure by the customer to clear the Products from the relevant customs or other
+authorities in the relevant county whether due to the failure to obtain or maintain the requisite authorizations or licenses or
+for any other reason whatsoever, will not invalidate this agreement and the customer shall remain bound by the terms of this
+agreement including liability to make payments to Metra under the terms of this Agreement
+'''
+            sheet.merge_range(table_row, 0, table_row, 8,text_term_5, format_5)
+            table_row += 2
+            sheet.merge_range(table_row, 0, table_row, 8,'6. Acceptance', format_6)
+            table_row += 1
+            tetx_term_6='''
+When the customer or its nominated shipping agent receive the products, the customer or its nominated shipping agent must
+inspect the products for any defects or non-conformity, and if any, the customer must notify Metra immediately and mention
+any discrepancies on the proof of delivery. After this, the customer will have accepted Product. If Metra agrees to the return
+of Product at its choosing, it must be in its original condition with packaging, a return note and proof of purchase;
+'''
+            sheet.merge_range(table_row, 0, table_row, 8,tetx_term_6, format_5)
+            table_row += 2
+            sheet.merge_range(table_row, 0, table_row, 8,'7. Export Control', format_6)
+            table_row += 1
+            text_term_7='''The customer acknowledge that Product may include technology and Software which is subject to US and EU export control
+laws and laws of the country where it is delivered or used: the customer must abide by all these laws. Product may not be sold,
+leased or transferred to restricted / embargoed end users or countries or for a user involved in weapons of mass destruction
+or genocide without the prior consent of the US or competent EU government. The customer understands and acknowledges
+that US and EU restrictions vary regularly and depending on Product, therefore you must refer to the current US and EU
+regulations.
+'''
+            sheet.merge_range(table_row, 0, table_row, 8,text_term_7, format_5)
+            table_row += 2
+            sheet.merge_range(table_row, 0, table_row, 8,'8. Foreign Corrupt Practices Act ("FCPA")', format_6)
+            table_row += 1
+            tetx_term_8='''
+Each Party shall comply with all applicable laws and regulations enacted to combat bribery and corruption, including the
+United States Foreign Corrupt Practices Act ("FCPA"), the local Bribery Acts, the principles of the OECD Convention on
+Combating Bribery of Foreign Public Officials (the "OECD Convention") and any corresponding laws of all countries where
+business or services will be conducted or performed pursuant to this Agreement. Any amounts paid by Supplier to Introducer
+pursuant to the terms of this Agreement will be for the services actually rendered, or products sold, in accordance with the
+terms of this Agreement. Introducer shall not directly or indirectly through a third party pay, offer, promise to pay, or give
+anything of value (including any amounts paid or credited by Supplier to Introducer) to any person including an employee or
+official of a government, government controlled enterprise or company, or vendor or customer or political party, with the
+reasonable knowledge that it will be used for the purpose of obtaining any improper benefit or to improperly influence any act
+or decision Supplier to Introducer to any person including an employee or official of a government, government controlled
+enterprise or company, or vendor or customer or political party, with the reasonable knowledge that it will be used for the
+purpose of obtaining any improper benefit or to improperly influence any act or decision by such person or party for the
+purpose of obtaining, retaining, or directing business.
+'''
+            sheet.merge_range(table_row, 0, table_row, 8,tetx_term_8, format_5)
+            table_row += 2
+            sheet.merge_range(table_row, 0, table_row, 8,'9. Confidentiality', format_6)
+            table_row += 1
+            tetx_term_8='''Each party must treat all information received from the other marked "confidential" or reasonably obvious to be confidential
+as it would treat its own confidential information.
+'''
+            sheet.merge_range(table_row, 0, table_row, 8,tetx_term_8, format_5)
+            
+
        

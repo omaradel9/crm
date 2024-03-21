@@ -5,65 +5,66 @@
         <xpath expr="//div[hasclass('terms_conditions')]" position="replace">
             <div class="terms_conditions" style="margin-top:30px">
                 <div class="content_terms">
-                    <div style="margin-bottom:15px">
+                    <div style="margin-bottom:0px; padding:0px">
                         <t t-if="doc.pricelist_id.currency_id">
-                            <p style="display: inline; font-weight: bold;color:#2d2d85; font-size:20px; padding:5px">Currency: </p>
-                            <span style="display: inline;color:#2d2d85; font-size:20px; padding:5px"><t t-esc="doc.pricelist_id.currency_id.name"/></span> 
+                            <p style="display: inline; font-weight: bold;color:#2d2d85;  padding:5px">Currency: </p>
+                            <span style="display: inline;color:#2d2d85;  padding:5px"><t t-esc="doc.pricelist_id.currency_id.name"/></span> 
                             
                         </t>
                     </div>
-                    <div style="margin-bottom:15px">
+                    <div style="margin-bottom:0px; padding:0px">
                         <t t-if="doc.amount_total">
-                            <p style="display: inline; font-weight: bold;color:#2d2d85; font-size:20px; padding:5px">Total in Word:</p>
-                            <span style="display: inline;color:#2d2d85; font-size:18px; padding:5px"><t t-esc="doc.compute_total_text()"/></span> 
+                            <p style="display: inline; font-weight: bold;color:#2d2d85;  padding:5px">Total in Word:</p>
+                            <span style="display: inline;color:#2d2d85;  padding:5px"><t t-esc="doc.compute_total_text()"/></span> 
                             
                         </t>
 
                     </div>
-                    <div style="margin-bottom:15px">
+                    <div style="margin-bottom:0px; padding:0px">
                         <t t-if="doc.payment_term_id">
-                            <p style="display: inline; font-weight: bold;color:#2d2d85; font-size:20px;">Payment Terms:</p>
-                            <span style="display: inline;color:#2d2d85;font-size:20px;"><t t-raw="doc.payment_term_id.note"/></span> 
+                            <p style="display: inline; font-weight: bold;color:#2d2d85; ">Payment Terms:</p>
+                            <span style="display: inline;color:#2d2d85;"><t t-raw="doc.payment_term_id.note"/></span> 
                             
                         </t>
 
                     </div>
-                    <div style="margin-bottom:15px">
+                
+                    <div style="margin-bottom:0px; padding:0px">
                         <t t-if="doc.payment_method">
-                            <p style="display: inline; font-weight: bold;color:#2d2d85; font-size:20px; padding:5px">Payment Method:</p>
-                            <span style="display: inline;color:#2d2d85; font-size:20px; padding:5px"><t t-esc="doc.payment_method"/></span>
+                            <p style="display: inline; font-weight: bold;color:#2d2d85;  padding:5px">Payment Method:</p>
+                            <span style="display: inline;color:#2d2d85;  padding:5px"><t t-esc="doc.payment_method"/></span>
                             
                         </t>
 
                     </div>
-                    <div style="margin-bottom:15px">
+                    <div style="margin-bottom:0px; padding:0px">
                         <t t-if="doc.incoterms">
-                            <p style="display: inline; font-weight: bold;color:#2d2d85;font-size:20px; padding:5px">Incoterms:</p>
-                            <span style="display: inline;color:#2d2d85;font-size:20px; padding:5px"><t t-esc="doc.incoterms"/></span> 
+                            <p style="display: inline; font-weight: bold;color:#2d2d85; padding:5px">Incoterms:</p>
+                            <span style="display: inline;color:#2d2d85;padding:5px"><t t-esc="doc.incoterms"/></span> 
                             
                         </t>
 
                     </div>
-                    <div style="margin-bottom:15px">
+                    <div style="margin-bottom:0px; padding:0px">
                         <t t-if="doc.delivery_location">
-                            <p style="display: inline; font-weight: bold; color:#2d2d85;font-size:20px; padding:5px">Delivery Location:</p>
-                            <span style="display: inline; color:#2d2d85;font-size:20px; padding:5px"><t t-esc="doc.delivery_location"/></span> 
+                            <p style="display: inline; font-weight: bold; color:#2d2d85; padding:5px">Delivery Location:</p>
+                            <span style="display: inline; color:#2d2d85; padding:5px"><t t-esc="doc.delivery_location"/></span> 
                             
                         </t>
 
                     </div>
-                    <div style="margin-bottom:15px;">
+                    <div style="margin-bottom:0px; padding:0px">
                         <t t-if="doc.mode_of_shipment">
-                            <p style="display: inline; font-weight: bold;color:#2d2d85;font-size:20px; padding:5px">Mode of Shipment:</p>
-                            <span style="display: inline;color:#2d2d85;font-size:20px; padding:5px"><t t-esc="doc.mode_of_shipment"/></span> 
+                            <p style="display: inline; font-weight: bold;color:#2d2d85; padding:5px">Mode of Shipment:</p>
+                            <span style="display: inline;color:#2d2d85; padding:5px"><t t-esc="doc.mode_of_shipment"/></span> 
                             
                         </t>
 
                     </div>
-                    <div style="margin-bottom:15px;">
+                    <div style="margin-bottom:5px; padding:0px">
                         <t t-if="doc.end_user_id">
-                            <p  style="display: inline; font-weight: bold;color:#2d2d85;font-size:20px; padding:5px">End Customer:</p>
-                            <span  style="display: inline;color:#2d2d85;font-size:20px; padding:5px"><t t-esc="doc.end_user_id.name"/></span> 
+                            <p  style="display: inline; font-weight: bold;color:#2d2d85; padding:5px">End Customer:</p>
+                            <span  style="display: inline;color:#2d2d85;padding:5px"><t t-esc="doc.end_user_id.name"/></span> 
                             
                         </t>
 
@@ -100,6 +101,168 @@ destinations and proliferation end-users and end-uses is strictly prohibited wit
                 <p>
                     This document is Metra's system generated Document and does not require anyone signature nor Metra's stamp on it.
                 </p>
+
+            </div>
+
+
+            <div class="terms_metra">
+             
+                <div class="content_term">
+                    <p style="font-size:14; font-weight: bold; margin-bottom:0px">
+                        Terms and Conditions
+                    </p>
+                    <p style="font-size:14; font-weight: bold;">
+                        Metra Computer Group
+                    </p>
+                   
+                  
+                    <div>
+                        <p style="font-size:14; font-weight: bold; margin-bottom:0px">
+                            1. Quotations/Orders/Contract              
+                        </p>
+                        <p style="font-size:15px">
+                            Quotations are only valid in writing and during the period that they state. If unstated, the period is 3 days. Please check the Order Confirmation and notify Metra
+    of any mistake in writing immediately or the details stated in the Order confirmation will apply to this Agreement. All product and pricing information is based on
+    latest information available. Subject to change without notice or obligation.
+    The customer cannot cancel or change a Purchase Orders or Order Confirmation sent to Metra. The customer/s are obliged to accept the deliveries within (2)
+    calendar days from the time the products are made available at the place of delivery stated in the order confirmation. If the customer refuses or delay delivery
+    without Metra's agreement, the customer must pay Metra's expenses or loss resulting from that refusal, including storage costs, until you accept delivery. Nothing
+    in this agreement affects Metra's right to cancel or reject any order at any time.
+                        </p>
+
+                    </div>
+
+                    <div>
+                        <p style="font-size:14; font-weight: bold; margin-bottom:0px">
+                            2. Pricing
+                        </p>
+                        <p style="font-size:15px">
+                            Products and service offering prices, tax, shipment, insurance and installation are as shown on the invoice. Changes to exchange rates, duties, insurance,
+freight, market condition, and purchase costs (incl. for components and Services) may cause Metra to adjust prices accordingly.
+                           
+                        </p>
+
+                    </div>
+
+                    <div>
+                       
+                        <p style="font-size: 16px; font-weight: bold;margin-bottom:0px">
+                            3. Payment Terms &amp; Payment Obligation
+                        </p>
+                        <p style="font-size:15px">
+                            Payment will be made as agreed in writing by Metra or in absence of such agreement, within 30 days of the invoice date without further notice from Metra.
+Payment timing is of the essence. Metra may suspend deliveries or Service until full payment for that order. If payment is late, Metra may charge a late payment
+charge of 2% monthly accruing on a day-to-day basis for each day of late payment, subject to maximum limitation by law, (unless we otherwise elect) on the
+overdue amount, and the costs of recovery shall be payable by the customer.
+The customer agrees that all invoices and any other amounts due under this agreement are payable solely to us in the currency of payment stated above, in full
+without any set off, counter-claims, abatement, or reduction. We may at our sole discretion apply payments made to us (whether by you or otherwise) to pay late
+payment charges, invoices overdue interest, or any outstanding amounts.
+The customer must pay all sums due to us under this agreement including invoices and other charges to us in full, without abatement, discount, reduction, set off,
+dispute or counterclaim. The customer will not assert against Metra any claims the customer may have against any third party including the manufacturer or
+original supplier or shipper of goods. We have no obligation to perform any obligation by any third party.
+Metra may set off against any amounts owed by Metra to the customer any amount dues from the customer to Metra (including those prospectively or
+contingently due where in our reasonable opinion they are likely to become payable).
+                       
+                        </p>
+
+                    </div>
+
+                    <div>
+                        <p style="font-size:14; font-weight: bold; margin-bottom:0px">
+                            4. Delivery/Title/Risk
+                        </p>
+                        <p style="font-size:15px">
+                            The Delivery period in the Order Confirmation is approximate. Partial deliveries may be made. The place of delivery is stated in the Order Confirmation. Title to
+Product passes on full payment and until then the customer must insure the goods and the customer must not modify or pledge them. The customer may use the
+goods, without modification, in the ordinary course of business. Metra reserves the rights to enter the storage premises to repossess the goods. If the customer
+sells them before title passes, the customer will become Metra's agent and the proceeds of such sale shall be held on Metra's behalf separately from the
+customer's general funds. Metra may sue for the Price before title passes. If the customer refuses delivery without Metra's agreement, the customer must pay
+Metra's expenses or loss resulting from that refusal, including storage costs, until the customer accepts delivery. All risk of the loss of the goods passes to the
+customer upon delivery. Any missing or damaged packaging should be noted on the waybill prior to signing it by the customer or its nominated shipping agent.
+                         
+                       
+                        </p>
+
+                    </div>
+
+                    <div>
+                        <p style="font-size:14; font-weight: bold; margin-bottom:0px">
+                            5. Trade and Import Authorizations
+                        </p>
+                        <p style="font-size:15px">
+                            The customer hereby warrant and represent that the customer have and shall continue to have the due authorizations and licenses necessary and required to
+purchase the Products and any other products purchased from the Supplier and to import the same into the relevant country. Any failure by the customer to clear
+the Products from the relevant customs or other authorities in the relevant county whether due to the failure to obtain or maintain the requisite authorizations or
+licenses or for any other reason whatsoever, will not invalidate this agreement and the customer shall remain bound by the terms of this agreement including
+liability to make payments to Metra under the terms of this Agreement.
+              
+                        </p>
+
+                    </div>
+
+                    <div>
+                        <p style="font-size:14; font-weight: bold;margin-bottom:0px ">
+                            6. Acceptance
+                        </p>
+                        <p style="font-size:15px">
+                            When the customer or its nominated shipping agent receive the products, the customer or its nominated shipping agent must inspect the products for any defects
+or non-conformity, and if any, the customer must notify Metra immediately and mention any discrepancies on the proof of delivery. After this, the customer will
+have accepted Product. If Metra agrees to the return of Product at its choosing, it must be in its original condition with packaging, a return note and proof of
+purchase;
+ 
+                        </p>
+
+                    </div>
+
+                    <div>
+                        <p style="font-size:14; font-weight: bold; margin-bottom:0px ">
+                            7. Export Control
+                        </p>
+                        <p style="font-size:15px">
+                            The customer acknowledge that Product may include technology and Software which is subject to US and EU export control laws and laws of the country where
+it is delivered or used: the customer must abide by all these laws. Product may not be sold, leased or transferred to restricted / embargoed end users or countries
+or for a user involved in weapons of mass destruction or genocide without the prior consent of the US or competent EU government. The customer understands
+and acknowledges that US and EU restrictions vary regularly and depending on Product, therefore you must refer to the current US and EU regulations.
+
+                        </p>
+
+                    </div>
+
+                    <div>
+                        <p style="font-size:14; font-weight: bold;margin-bottom:0px ">
+                            8. Foreign Corrupt Practices Act ("FCPA")
+                        </p>
+                        <p style="font-size:15px">
+                            Each Party shall comply with all applicable laws and regulations enacted to combat bribery and corruption, including the United States Foreign Corrupt Practices
+Act ("FCPA"), the local Bribery Acts, the principles of the OECD Convention on Combating Bribery of Foreign Public Officials (the "OECD Convention") and any
+corresponding laws of all countries where business or services will be conducted or performed pursuant to this Agreement. Any amounts paid by Supplier to
+Introducer pursuant to the terms of this Agreement will be for the services actually rendered, or products sold, in accordance with the terms of this Agreement.
+Introducer shall not directly or indirectly through a third party pay, offer, promise to pay, or give anything of value (including any amounts paid or credited by
+Supplier to Introducer) to any person including an employee or official of a government, government controlled enterprise or company, or vendor or customer or
+political party, with the reasonable knowledge that it will be used for the purpose of obtaining any improper benefit or to improperly influence any act or decision
+Supplier to Introducer to any person including an employee or official of a government, government controlled enterprise or company, or vendor or customer or
+political party, with the reasonable knowledge that it will be used for the purpose of obtaining any improper benefit or to improperly influence any act or decision
+by such person or party for the purpose of obtaining, retaining, or directing business.
+
+   
+                        </p>
+
+                    </div>
+
+                    <div>
+                        <p style="font-size:14; font-weight: bold; margin-bottom:0px">
+                            9. Confidentiality
+                        </p>
+                        <p style="font-size:15px">
+                            Each party must treat all information received from the other marked "confidential" or reasonably obvious to be confidential as it would treat its own confidential
+information.
+ 
+                        </p>
+
+                    </div>
+                  
+                   
+                </div>
 
             </div>
 

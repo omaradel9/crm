@@ -18,6 +18,25 @@
 
                 
             </xpath>
+            <xpath expr="//field[@name='offer_validity']" position="attributes">
+                <attribute name="invisible">True</attribute>
+            </xpath>
+            <xpath expr="//field[@name='prices']" position="attributes">
+                <attribute name="invisible">True</attribute>
+            </xpath>
+            <xpath expr="//field[@name='delivery']" position="attributes">
+                <attribute name="invisible" >True</attribute>
+            </xpath>
+            <xpath expr="//field[@name='partial_delivery']" position="attributes">
+                <attribute name="invisible" >True</attribute>
+            </xpath>
+            <xpath expr="//field[@name='responsibility']" position="attributes">
+                <attribute name="invisible" >True</attribute>
+            </xpath>
+            <xpath expr="//field[@name='required_information']" position="attributes">
+                <attribute name="invisible">True</attribute>
+            </xpath>
+           
          
             
         </field>

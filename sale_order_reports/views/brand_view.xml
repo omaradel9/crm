@@ -46,6 +46,6 @@
         </record> 
 
 
-        <menuitem id="brand_menu" name="Brands" parent="sale.sale_order_menu" action="brand_action" />
+        <menuitem id="brand_menu" name="Usage" parent="sale.menu_sale_config" action="brand_action" />
     </data>
 </odoo>

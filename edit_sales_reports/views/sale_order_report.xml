@@ -41,6 +41,16 @@
                          
                         </tr>
                         <tr style="margin:0px; padding:0px">
+                            <th style="margin:0px;padding:0px;text-align:left">
+                                Usage:
+
+                            </th>
+                            <td style="margin:0px; padding-left:3px;text-align:left" colspan="6">
+                                <span style="display: inline; padding:5px"><t t-esc="doc.brand_id.name"/></span> 
+                            </td>
+                         
+                        </tr>
+                        <tr style="margin:0px; padding:0px">
                             <th style="margin-left:20px;margin-bottom:0px;padding:0px; width:120px; text-align:left">
                                 Total in Word:
 

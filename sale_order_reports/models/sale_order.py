@@ -10,7 +10,7 @@ class SaleOrder(models.Model):
 
     
     brand_id = fields.Many2one(
-        string='brand',
+        string='Usage',
         comodel_name='brand',
         ondelete='restrict',
     )

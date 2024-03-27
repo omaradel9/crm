@@ -171,6 +171,11 @@ class QuotationReportXlsx(models.AbstractModel):
                 sheet.merge_range(table_row, 0, table_row, 2, 'Currency:', format_4)
                 sheet.merge_range(table_row, 3, table_row, 8, obj.pricelist_id.currency_id.name, format_4)
                 table_row += 2
+            if obj.brand_id:
+                sheet.set_row(table_row,30)
+                sheet.merge_range(table_row, 0, table_row, 2, 'Usage:', format_4)
+                sheet.merge_range(table_row, 3, table_row, 8, obj.brand_id.name, format_4)
+                table_row += 2    
             # if obj.pricelist_id.currency_id:
             #     sheet.set_row(table_row,30)
             #     sheet.merge_range(table_row, 0, table_row, 2, 'Currency:', format_4)

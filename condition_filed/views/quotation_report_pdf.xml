@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <template id="custom_edit_sale_order_action_report_pdf_inherit" name="custom_edit_sale_order_action_report_pdf_inherit" inherit_id="sale_order_reports.custom_sale_order_action_report_pdf">
+        <xpath expr="//table" position="replace">
+            <table class="table" style="border-bottom:5px solid white;">
+                <thead style="background-color:#D3D3D3;border-bottom:5px solid white;">
+                    <tr>
+                        <th style ="background-color:#D3D3D3;">Items</th>
+                        <th style ="background-color:#D3D3D3;width:200px">Part Numbers</th>
+                        <th style ="background-color:#D3D3D3;width:200px">Product Description</th>
+                        <th style ="background-color:#D3D3D3;">Quantity</th>
+                        <t t-if="doc._check_duration_visiblity()">
+                            <th style ="background-color:#D3D3D3;">Service Duration</th>
+
+                            
+                        </t>
+                        <th style ="background-color:#D3D3D3;">Unit Price</th>
+                        <th style ="background-color:#D3D3D3;">Total Price</th>
+                    
+                    </tr>
+                    
+                    
+                    
+                </thead>
+                <tbody>
+                    <t t-set="last_row" t-value="0"/>
+                    <t t-set="counter" t-value="0"/>
+                    <t t-foreach="doc.order_line" t-as="product">
+                        <t t-set="counter" t-value="counter + 1"/>
+                    
+                        <tr>
+                            <t t-if="not product.display_type">
+                                <td t-if="not product.line_number"><span t-out="counter"/></td>
+                                <td t-if="product.line_number"><span t-esc="product.line_number"/></td>
+                                <td><span t-esc="product.product_template_id.name"/></td>
+                                <td><span t-esc="product.name"/></td>
+                                <td><span t-esc="product.product_uom_qty"/></td>
+                                <t t-if="doc._check_duration_visiblity()">
+                                    <!-- <td t-if="not product.duration"><span>N/A</span></td> -->
+                                    <td t-if="product.duration"><span t-esc="product.duration"/></td>
+                                    
+                                </t>
+                            
+                            
+                                <td style="text-align:right;"><span t-esc="doc.currency_id.symbol"/><span t-esc="'{0:,.2f}'.format(int(product.price_unit))"/></td>
+                                <td style="text-align:right;"><span t-esc="doc.currency_id.symbol"/><span t-esc="'{0:,.2f}'.format(int(product.price_subtotal))"/></td>
+                                
+                            </t>
+                            <t t-elif="product.display_type == 'line_section'">
+                                <td name="td_section_line" colspan="99">
+                                    <span t-field="product.name"/>
+                                </td>
+                            </t>
+                            <t t-elif="product.display_type == 'line_note'">
+                                <td name="td_note_line" colspan="99">
+                                    <span t-field="product.name"/>
+                                </td>
+                            </t>
+                           
+                            
+                        
+                        </tr>
+                    
+                    </t>
+                    <t t-set="last_row" t-value="counter"/>
+                    
+            
+                </tbody>
+                    <!-- <div class="last-page" style="page-break-inside: avoid;">
+                        <tfoot style="border-top:5px solid white; page-break-after: always;" class="last-page"> -->
+                
+                            <tr style="border-top:20px solid white;">
+                                <th  style ="background-color:#D3D3D3;border-bottom:1px solid #9f9e9e;text-align:left" colspan="6">Sub Totals In USD Excluding VAT</th>
+                                <td><span t-esc="doc.currency_id.symbol"/><span t-esc="'{0:,.2f}'.format(int(doc.amount_untaxed))"/></td>
+                            </tr>
+                            <tr>
+                                <th style="background-color:#D3D3D3; border-bottom:1px solid #9f9e9e; text-align:left" colspan="6">Value-Added Tax (VAT) (<span t-esc="doc.term_conditions_id.tax"/>%)</th>
+                                <td><span t-esc="doc.currency_id.symbol"/><span t-esc="'{0:,.2f}'.format(int(doc.amount_tax))"/></td>
+                            </tr>
+                            <tr>
+                                <th style ="background-color:#D3D3D3; border-bottom:1px solid #9f9e9e; text-align:left"  colspan="6">Total Prices In USD Including VAT</th>
+                                <td><span t-esc="doc.currency_id.symbol"/><span t-esc="'{0:,.2f}'.format(int(doc.amount_total))"/></td>
+                            </tr>
+
+                        
+                    
+                    
+                    
+                        <!-- </tfoot>
+
+                    </div> -->
+                    
+                    
+                        
+                
+            
+                
+                    
+                
+            
+            </table>
+            
+            
+        </xpath>
+                
+    </template>
+
+</odoo>

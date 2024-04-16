@@ -27,7 +27,9 @@
             </xpath>
             <xpath expr="//field[@name='order_line']/tree/field[@name='product_uom_qty']" position="after">
                 <field name="smart_account_mandatory" optional="hide"/>
-                <field name="cisco_product_ref" attrs="{'column_invisible': [('parent.current_company_brands','!=','cisco')]}" optional="hide"/>
+                <!-- <field name="cisco_product_ref" attrs="{'column_invisible': [('parent.current_company_brands','!=','cisco')]}" optional="hide"/> -->
+                <field name="cisco_product_ref" />
+
                 <field name="product_family" optional="hide" />
                 <field name="estimated_lead_time" optional="hide"/>
                 <field name="cost" optional="hide" />

@@ -19,3 +19,12 @@ class SaleOrder(models.Model):
             return self.env.ref('send_by_email.email_template_custom_quotation_sale', raise_if_not_found=False)
         else:
             return self._get_confirmation_template()
+        
+
+
+    def _get_confirmation_template(self):
+        """ Get the mail template sent on SO confirmation (or for confirmed SO's).
+
+        :return: `mail.template` record or None if default template wasn't found
+        """
+        return self.env.ref('send_by_email.mail_template_custom_sale_confirmation', raise_if_not_found=False)    

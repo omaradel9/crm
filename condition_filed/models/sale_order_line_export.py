@@ -52,10 +52,13 @@ class QuotationReportXlsx(models.AbstractModel):
                 try:
                     duration = int(line.duration)
                 except ValueError:
-                    raise ValidationError('Service Duration Must Be Number Not String')
+                    line.duration = False
+
                 else:
                     if duration != 0:
                         duration_values.append(duration)
+                    elif duration == 0:
+                        line.duration = False    
 
 
        

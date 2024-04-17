@@ -114,7 +114,7 @@ class SaleOrderLinesImportWizard(models.TransientModel):
                         }
                         sale_order_line = self.env['sale.order.line'].create(sale_order_line_values) 
                     else:        
-                            if pd.isnull(row[10]) or pd.isnull(row[13]) or pd.isnull(row[17]) or pd.isnull(row[18]):
+                            if pd.isnull(row[10]) or pd.isnull(row[12]) or pd.isnull(row[13]) or pd.isnull(row[17]) or pd.isnull(row[18]):
                                 unit_vendor_list_price =0 if pd.isnull([row[7]]) else float(row[7])
                                 dic_metra = 0 if pd.isnull([row[11]]) else float(row[11])
                                 qty= 0 if pd.isnull([row[9]]) else float(row[9])

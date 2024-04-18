@@ -29,17 +29,17 @@ class SaleOrder(models.Model):
         string='Service Duration (Months)',
     )
 
-    price_unit = fields.Float(
-        string="Unit Net Price",
-        compute='_compute_price_unit',
-        digits='Product Price',
-        store=True, readonly=False, required=True, precompute=True)
+    # price_unit = fields.Float(
+    #     string="Unit Net Price",
+    #     compute='_compute_price_unit',
+    #     digits='Product Price',
+    #     store=True, readonly=False, required=True, precompute=True)
     
 
-    price_subtotal = fields.Monetary(
-        string="Total Price",
-        compute='_compute_amount',
-        store=True, precompute=True)
+    # price_subtotal = fields.Monetary(
+    #     string="Total Price",
+    #     compute='_compute_amount',
+    #     store=True, precompute=True)
     
 
     discount_metra = fields.Float('Vendor Discount (%)')

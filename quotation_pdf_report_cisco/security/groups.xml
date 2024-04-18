@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    
+
+   
+    <record id="group_cisco_ksa" model="res.groups">
+        <field name="name">Cisco-KSA With Partner Discount</field>
+        <field name="category_id" ref="base.module_category_sales_sales"/>
+
+    </record>
+
+
+  
+
+
+   
+
+</odoo>

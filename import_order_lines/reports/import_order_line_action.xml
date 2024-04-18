@@ -6,10 +6,10 @@
     <report
                 id="custom_import_line_action_report_xlsx"
                 model="sale.order"
-                string="Import order lines"
+                string="MetraQuotationTemplate"
                 report_type="xlsx"
                 name="import_order_lines.custom_import_line_report_xlsx"
-                file="Import order lines"
+                file="MetraQuotationTemplate"
                 attachment_use="False"
                 menu="False"
 

@@ -43,8 +43,8 @@ class SaleOrderLinesImportWizard(models.TransientModel):
                             total_price = round((unit_net_price * qty), 2)
                             partner_discount = 0 if pd.isnull([row[15]]) else float(row[15])
                             partner_unit_net_price  = round(unit_vendor_list_price - (unit_vendor_list_price * (partner_discount / 100)), 2)
-                            margin= 0 if pd.isnull([row[16]]) else float(row[16])
-                            conditions = 0 if pd.isnull([row[17]]) else float(row[17])
+                            margin= 0 if pd.isnull([row[17]]) else float(row[17])
+                            conditions = 0 if pd.isnull([row[16]]) else float(row[16])
                             unit_selling_price  = (unit_net_price * (1+ conditions/100))/(1- margin/100)
                             total_selling_price = unit_selling_price * qty 
 
@@ -95,8 +95,8 @@ class SaleOrderLinesImportWizard(models.TransientModel):
                                     'total_price': float(row[13]),
                                     'partner_unit_net_price': float(row[14]),
                                     'partner_discount': 0 if pd.isnull(row[15]) else float(row[15]),
-                                    'mergin': 0 if pd.isnull(row[16]) else float(row[16]),
-                                    'conditions': 0 if pd.isnull(row[17]) else float(row[17]),
+                                    'mergin': 0 if pd.isnull(row[17]) else float(row[17]),
+                                    'conditions': 0 if pd.isnull(row[16]) else float(row[16]),
                                     'price_unit':float(row[18]),
                                     'price_subtotal': float(row[19]),
 
@@ -123,8 +123,8 @@ class SaleOrderLinesImportWizard(models.TransientModel):
                                 total_price = round((unit_net_price * qty), 2)
                                 partner_discount = 0 if pd.isnull([row[14]]) else float(row[14])
                                 partner_unit_net_price  = round(unit_vendor_list_price - (unit_vendor_list_price * (partner_discount / 100)), 2)
-                                margin= 0 if pd.isnull([row[15]]) else float(row[15])
-                                conditions = 0 if pd.isnull([row[16]]) else float(row[16])
+                                margin= 0 if pd.isnull([row[16]]) else float(row[16])
+                                conditions = 0 if pd.isnull([row[15]]) else float(row[15])
                                 unit_selling_price  = (unit_net_price * (1+ conditions/100))/(1- margin/100)
                                 total_selling_price = unit_selling_price * qty 
 
@@ -173,8 +173,8 @@ class SaleOrderLinesImportWizard(models.TransientModel):
                                         'total_price': float(row[12]),
                                         'partner_unit_net_price': float(row[13]),
                                         'partner_discount': 0 if pd.isnull(row[14]) else float(row[14]),
-                                        'mergin': 0 if pd.isnull(row[15]) else float(row[15]),
-                                        'conditions': 0 if pd.isnull(row[16]) else float(row[16]),
+                                        'mergin': 0 if pd.isnull(row[16]) else float(row[16]),
+                                        'conditions': 0 if pd.isnull(row[15]) else float(row[15]),
                                         'price_unit':float(row[17]),
                                         'price_subtotal': float(row[18]),
 

@@ -94,7 +94,7 @@
              
                 
             </xpath>  
-            <xpath expr="//field[@name='price_unit']" position="attributes">
+            <!-- <xpath expr="//field[@name='price_unit']" position="attributes">
                 <attribute name="string">
                     Unit Net Price
                 </attribute>
@@ -107,7 +107,7 @@
                 </attribute>
              
                 
-            </xpath>  
+            </xpath>   -->
             <xpath expr="//field[@name='discount_metra']" position="attributes">
                 <attribute name="string">
                     Vendor Discount (%)

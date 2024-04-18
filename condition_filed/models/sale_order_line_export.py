@@ -112,10 +112,11 @@ class QuotationReportXlsx(models.AbstractModel):
         col += 1
         sheet.write(0, col, 'Partner Discount (%)', format_1)
         col += 1
-        sheet.write(0, col, 'Margin (%)', format_1)
-        col += 1
         sheet.write(0, col, 'Conditions (%)', format_1)
         col += 1
+        sheet.write(0, col, 'Margin (%)', format_1)
+        col += 1
+       
         sheet.write(0, col, 'Unit Selling Price', format_1)
         col += 1
         sheet.write(0, col, 'Total Selling Price', format_1)
@@ -132,6 +133,8 @@ class QuotationReportXlsx(models.AbstractModel):
                
                     if line.display_type == 'line_section':
                         sheet.merge_range(index+1,0,index+1,19, line.name,bold)
+                    elif line.display_type == 'line_note':
+                        sheet.merge_range(index+1,0,index+1,19, line.name,bold)    
                     else: 
                         if duration_values: 
                             sheet.write(index+1, 0, line.line_number or index+1)  
@@ -150,8 +153,8 @@ class QuotationReportXlsx(models.AbstractModel):
                             sheet.write(index+1, 13, line.total_price)
                             sheet.write(index+1, 14, line.partner_unit_net_price)
                             sheet.write(index+1, 15, line.partner_discount)
-                            sheet.write(index+1, 16, line.mergin)
-                            sheet.write(index+1, 17, line.conditions)
+                            sheet.write(index+1, 16, line.conditions)
+                            sheet.write(index+1, 17, line.mergin)
                             sheet.write(index+1, 18, line.price_unit)
                             sheet.write(index+1, 19, line.price_subtotal)
                         else:
@@ -170,8 +173,8 @@ class QuotationReportXlsx(models.AbstractModel):
                             sheet.write(index+1, 12, line.total_price)
                             sheet.write(index+1, 13, line.partner_unit_net_price)
                             sheet.write(index+1, 14, line.partner_discount)
-                            sheet.write(index+1, 15, line.mergin)
-                            sheet.write(index+1, 16, line.conditions)
+                            sheet.write(index+1, 15, line.conditions)
+                            sheet.write(index+1, 16, line.mergin)
                             sheet.write(index+1, 17, line.price_unit)
                             sheet.write(index+1, 18, line.price_subtotal)
 

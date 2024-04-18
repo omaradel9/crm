@@ -3,8 +3,8 @@
     "description": " quotation pdf report for team cisco only",
     "author": "Basant Gaber Abd-Elaziz",
     "data": [
+        'security/groups.xml',
         'reports/quotaton_pdf_cisco.xml',
-        'security/groups.xml'
       
     
      
@@ -15,7 +15,7 @@
 
     ],
     'sequence':'-1',
-    "depends": ["base"],
+    "depends": ["base","sale"],
 
     'installable': True,
     'application': True,

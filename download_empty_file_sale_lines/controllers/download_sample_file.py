@@ -37,6 +37,7 @@ class Download_xls(http.Controller):
 
 
         excel = get_resource_path('download_empty_file_sale_lines', 'sample_file', 'MetraQuotationTemplate.xlsx')
+        print('------------------------------------------ppppppppppppppaaaaaaaaaattttttttttttttt', excel)
         workbook = load_workbook(filename=excel)        
         sheet = workbook['Import Sale Order Lines']
         new_workbook = xlsxwriter.Workbook('MetraQuotationTemplate')

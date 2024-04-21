@@ -3,10 +3,10 @@
 	<data noupdate="0">
 	
 		<record id="sample_import_sales_line_xlsx" model="ir.attachment">
-	        <field name="name">MetraQuotationTemplate.xlsx</field>
+	        <field name="name">MetraQuotationTemplateWithMacro.xlsm</field>
 	        <field name="public" eval="True"/>
 	        <field name="type">binary</field>
-	        <field name="datas" type="base64" file="download_empty_file_sale_lines/sample_file/MetraQuotationTemplate.xlsx"/>
+	        <field name="datas" type="base64" file="download_empty_file_sale_lines/sample_file/MetraQuotationTemplateWithMacro.xlsm"/>
 	    </record>
 	
 	  

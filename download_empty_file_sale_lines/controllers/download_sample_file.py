@@ -12,9 +12,9 @@ class Download_xls(http.Controller):
     def download_document(self,model,id, **kw):
          
 
-        sale_order_line_xls = request.env['ir.attachment'].search([('name','=','MetraQuotationTemplate.xlsx')])
+        sale_order_line_xls = request.env['ir.attachment'].search([('name','=','MetraQuotationTemplateWithMacro.xlsm')])
         filecontent = sale_order_line_xls.datas
-        filename = 'MetraQuotationTemplate.xlsx'
+        filename = 'MetraQuotationTemplateWithMacro.xlsm'
         filecontent = base64.b64decode(filecontent)
 
         return request.make_response(filecontent,

@@ -11,7 +11,9 @@
                     <group>
                         <group>
                             <button string="Download Empty File" name="action_download_sale_order_line_excel_doc" type="object" class="oe_highlight"/>
-                            <button name="download_order_lines" string="Download Order lines" type="object" class="oe_highlight"/>
+                            <button name="download_order_lines" string="Download Order lines" type="object" class="oe_highlight" 
+                            invisible="1"
+                            />
     
                             
                         </group>

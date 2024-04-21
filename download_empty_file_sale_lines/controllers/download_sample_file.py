@@ -36,11 +36,11 @@ class Download_xls(http.Controller):
 
 
 
-    #     excel = get_resource_path('download_empty_file_sale_lines', 'sample_file', 'MetraQuotationTemplate.xlsx')
+    #     excel = get_resource_path('download_empty_file_sale_lines', 'sample_file', 'MetraQuotationTemplateWithMacro.xlsm')
     #     print('------------------------------------------ppppppppppppppaaaaaaaaaattttttttttttttt', excel)
     #     workbook = load_workbook(filename=excel)        
     #     sheet = workbook['Import Sale Order Lines']
-    #     new_workbook = xlsxwriter.Workbook('MetraQuotationTemplate')
+    #     new_workbook = xlsxwriter.Workbook('MetraQuotationTemplateWithMacro')
     #     new_sheet= new_workbook.add_worksheet('Sale Order Lines')
     #     format_1 = new_workbook.add_format({'bold': True, 'align': 'center', 'valign': 'vcenter', 'bg_color': '#cccccc'})
     #     bold = new_workbook.add_format({'bold': True,'valign': 'vcenter'})
@@ -136,12 +136,12 @@ class Download_xls(http.Controller):
     #     new_workbook.close() 
 
 
-    #     with open('MetraQuotationTemplate', 'rb') as file:
+    #     with open('MetraQuotationTemplateWithMacro', 'rb') as file:
     #         filecontent = file.read()
 
 
 
-    #     filename = 'MetraQuotationTemplate.xlsx'
+    #     filename = 'MetraQuotationTemplateWithMacro.xlsm'
 
 
     #     return request.make_response(filecontent,

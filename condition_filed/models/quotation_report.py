@@ -106,7 +106,6 @@ class QuotationReportXlsx(models.AbstractModel):
             sheet.merge_range(13, col_num ,13,col_num + 2 ,'Product Description',format_2)
             col_num+=3
             if obj._check_duration_visiblity():
-                print('-----------------------------')
                 sheet.write(13,col_num,'Duration (Months)',format_2)
                 col_num+=1    
 
@@ -151,29 +150,54 @@ class QuotationReportXlsx(models.AbstractModel):
                 table_row += 1
                 index +=1
 
+
+            if obj._check_duration_visiblity():
+                sheet.merge_range(table_row,0,table_row,7,'Sub Totals In USD Excluding VAT',format_3)
+                sheet.write(table_row, 8,obj.amount_untaxed or "", currency)
+
+                table_row += 1
+                if obj.term_conditions_id.tax:
+                        vat_str = f'Value-Added Tax (VAT) ({obj.term_conditions_id.tax})'
+                else:
+                        vat_str = f'Value-Added Tax (VAT) (0)'
+            
+                sheet.merge_range(table_row,0,table_row,7,vat_str,format_3) 
+                sheet.write(table_row, 8,obj.amount_tax or "", currency)
+            
+                table_row += 1
+                
+                
+                sheet.merge_range(table_row,0,table_row,7,'Total Prices In USD Including VAT',format_3)  
+                sheet.write(table_row, 8,obj.amount_total or "", currency) 
+
+                table_row += 1
+            else:
+                sheet.merge_range(table_row,0,table_row,6,'Sub Totals In USD Excluding VAT',format_3)
+                sheet.write(table_row, 7,obj.amount_untaxed or "", currency)
+
+                table_row += 1
+                if obj.term_conditions_id.tax:
+                        vat_str = f'Value-Added Tax (VAT) ({obj.term_conditions_id.tax})'
+                else:
+                        vat_str = f'Value-Added Tax (VAT) (0)'
+            
+                sheet.merge_range(table_row,0,table_row,6,vat_str,format_3) 
+                sheet.write(table_row, 7,obj.amount_tax or "", currency)
+            
+                table_row += 1
+                
+                
+                sheet.merge_range(table_row,0,table_row,6,'Total Prices In USD Including VAT',format_3)  
+                sheet.write(table_row, 7,obj.amount_total or "", currency) 
+
+                table_row += 1    
+    
+
                 
 
                
 
-            sheet.merge_range(table_row,0,table_row,7,'Sub Totals In USD Excluding VAT',format_3)
-            sheet.write(table_row, 8,obj.amount_untaxed or "", currency)
-
-            table_row += 1
-            if obj.term_conditions_id.tax:
-                    vat_str = f'Value-Added Tax (VAT) ({obj.term_conditions_id.tax})'
-            else:
-                    vat_str = f'Value-Added Tax (VAT) (0)'
-         
-            sheet.merge_range(table_row,0,table_row,7,vat_str,format_3) 
-            sheet.write(table_row, 8,obj.amount_tax or "", currency)
-           
-            table_row += 1
             
-            
-            sheet.merge_range(table_row,0,table_row,7,'Total Prices In USD Including VAT',format_3)  
-            sheet.write(table_row, 8,obj.amount_total or "", currency) 
-
-            table_row += 1
             sheet.conditional_format(f"A14:I{table_row}",{'type':'formula','criteria': True,'format':table_border})
             sheet.conditional_format(f"J14:J{table_row}",{'type':'formula','criteria': True,'format':left_border})
 

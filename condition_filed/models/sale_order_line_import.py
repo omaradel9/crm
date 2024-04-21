@@ -9,6 +9,19 @@ class SaleOrderLinesImportWizard(models.TransientModel):
     _inherit = 'sale.order.lines.import.wizard'
 
 
+
+    def check_values(self,value,label):
+
+        if isinstance(value, str):
+            raise ValidationError("Invalid value for %s"% label)
+        else:
+            num = float(value)
+
+        return num    
+
+
+
+
     def action_import_sale_order_line(self):
         if self.order_lines_file:
             sale_order_line_data = base64.b64decode(self.order_lines_file)
@@ -34,17 +47,17 @@ class SaleOrderLinesImportWizard(models.TransientModel):
                         }
                         sale_order_line = self.env['sale.order.line'].create(sale_order_line_values) 
                     else:        
-                        if pd.isnull(row[11]) or pd.isnull(row[14]) or pd.isnull(row[18]) or pd.isnull(row[19]):
-                            unit_vendor_list_price =0 if pd.isnull([row[8]]) else float(row[8])
-                            dic_metra = 0 if pd.isnull([row[12]]) else float(row[12])
-                            qty= 0 if pd.isnull([row[10]]) else float(row[10])
+                        if pd.isnull(row[11]) or row[11] == 0 or pd.isnull(row[14]) or row[14] == 0 or pd.isnull(row[18]) or row[18] == 0 or pd.isnull(row[19]) or row[19] == 0:
+                            unit_vendor_list_price =0 if pd.isnull([row[8]]) else self.check_values(row[8], 'Unit Vendor List Price')
+                            dic_metra = 0 if pd.isnull([row[12]]) else self.check_values(row[12], 'Vendor Discount')
+                            qty= 0 if pd.isnull([row[10]]) else self.check_values(row[10],'Quantity')
 
                             unit_net_price  = round(unit_vendor_list_price - ((unit_vendor_list_price * dic_metra) / 100), 2)
                             total_price = round((unit_net_price * qty), 2)
-                            partner_discount = 0 if pd.isnull([row[15]]) else float(row[15])
+                            partner_discount = 0 if pd.isnull([row[15]]) else self.check_values(row[15], 'Partner Discount')
                             partner_unit_net_price  = round(unit_vendor_list_price - (unit_vendor_list_price * (partner_discount / 100)), 2)
-                            margin= 0 if pd.isnull([row[17]]) else float(row[17])
-                            conditions = 0 if pd.isnull([row[16]]) else float(row[16])
+                            margin= 0 if pd.isnull([row[17]]) else self.check_values(row[17], 'Margin')
+                            conditions = 0 if pd.isnull([row[16]]) else self.check_values(row[16], 'Conditions')
                             unit_selling_price  = (unit_net_price * (1+ conditions/100))/(1- margin/100)
                             total_selling_price = unit_selling_price * qty 
 
@@ -87,18 +100,18 @@ class SaleOrderLinesImportWizard(models.TransientModel):
                                     'product_family': '' if pd.isnull([row[5]]) else row[5],
                                     'duration': 'N/A' if pd.isnull(row[6]) else row[6],
                                     'estimated_lead_time': 'N/A' if pd.isnull(row[7]) else row[7],
-                                    'cost': 0 if pd.isnull(row[8]) else float(row[8]),
+                                    'cost': 0 if pd.isnull(row[8]) else self.check_values(row[8], 'Unit Vendor List Price'),
                                     'pricing_term': '' if pd.isnull([row[9]]) else row[9],
-                                    'product_uom_qty': float(row[10]),
-                                    'unit_net_price':float(row[11]), 
-                                    'discount_metra': 0 if pd.isnull(row[12]) else float(row[12]),
-                                    'total_price': float(row[13]),
-                                    'partner_unit_net_price': float(row[14]),
-                                    'partner_discount': 0 if pd.isnull(row[15]) else float(row[15]),
-                                    'mergin': 0 if pd.isnull(row[17]) else float(row[17]),
-                                    'conditions': 0 if pd.isnull(row[16]) else float(row[16]),
-                                    'price_unit':float(row[18]),
-                                    'price_subtotal': float(row[19]),
+                                    'product_uom_qty': self.check_values(row[10],'Quantity'),
+                                    'unit_net_price':self.check_values(row[11], 'Unit Net Price'), 
+                                    'discount_metra': 0 if pd.isnull(row[12]) else self.check_values(row[12], 'Vendor Discount'),
+                                    'total_price':self.check_values(row[13], 'Total Price'),
+                                    'partner_unit_net_price': self.check_values(row[14], 'Partner Unit Net Price'),
+                                    'partner_discount': 0 if pd.isnull(row[15]) else self.check_values(row[15], 'Partner Discount'),
+                                    'mergin': 0 if pd.isnull(row[17]) else self.check_values(row[17], 'Margin'),
+                                    'conditions': 0 if pd.isnull(row[16]) else self.check_values(row[16], 'Conditions'),
+                                    'price_unit':self.check_values(row[18], 'Unit Selling Price'),
+                                    'price_subtotal': self.check_values(row[19], 'Total Selling Price'),
 
 
                                 }    
@@ -114,17 +127,17 @@ class SaleOrderLinesImportWizard(models.TransientModel):
                         }
                         sale_order_line = self.env['sale.order.line'].create(sale_order_line_values) 
                     else:        
-                            if pd.isnull(row[10]) or pd.isnull(row[12]) or pd.isnull(row[13]) or pd.isnull(row[17]) or pd.isnull(row[18]):
-                                unit_vendor_list_price =0 if pd.isnull([row[7]]) else float(row[7])
-                                dic_metra = 0 if pd.isnull([row[11]]) else float(row[11])
-                                qty= 0 if pd.isnull([row[9]]) else float(row[9])
+                            if pd.isnull(row[10]) or row[10] == 0 or pd.isnull(row[12]) or row[12] == 0 or pd.isnull(row[13]) or row[13] == 0 or pd.isnull(row[17]) or row[17] == 0 or pd.isnull(row[18]) or row[18] == 0:
+                                unit_vendor_list_price =0 if pd.isnull([row[7]]) else self.check_values(row[7], 'Unit Vendor List Price')
+                                dic_metra = 0 if pd.isnull([row[11]]) else self.check_values(row[11], 'Vendor Discount')
+                                qty= 0 if pd.isnull([row[9]]) else self.check_values(row[9],'Quantity')
 
                                 unit_net_price  = round(unit_vendor_list_price - ((unit_vendor_list_price * dic_metra) / 100), 2)
                                 total_price = round((unit_net_price * qty), 2)
-                                partner_discount = 0 if pd.isnull([row[14]]) else float(row[14])
+                                partner_discount = 0 if pd.isnull([row[14]]) else self.check_values(row[14], 'Partner Discount')
                                 partner_unit_net_price  = round(unit_vendor_list_price - (unit_vendor_list_price * (partner_discount / 100)), 2)
-                                margin= 0 if pd.isnull([row[16]]) else float(row[16])
-                                conditions = 0 if pd.isnull([row[15]]) else float(row[15])
+                                margin= 0 if pd.isnull([row[16]]) else self.check_values(row[16], 'Margin')
+                                conditions = 0 if pd.isnull([row[15]]) else  self.check_values(row[15], 'Conditions')
                                 unit_selling_price  = (unit_net_price * (1+ conditions/100))/(1- margin/100)
                                 total_selling_price = unit_selling_price * qty 
 
@@ -165,18 +178,18 @@ class SaleOrderLinesImportWizard(models.TransientModel):
                                         'cisco_product_ref':'' if pd.isnull([row[4]]) else row[4],
                                         'product_family': '' if pd.isnull([row[5]]) else row[5],
                                         'estimated_lead_time': 'N/A' if pd.isnull(row[6]) else row[6],
-                                        'cost': 0 if pd.isnull(row[7]) else float(row[7]),
+                                        'cost': 0 if pd.isnull(row[7]) else self.check_values(row[7], 'Unit Vendor List Price'),
                                         'pricing_term': '' if pd.isnull([row[8]]) else row[8],
                                         'product_uom_qty': float(row[9]),
                                         'unit_net_price':float(row[10]), 
-                                        'discount_metra': 0 if pd.isnull(row[11]) else float(row[11]),
+                                        'discount_metra': 0 if pd.isnull(row[11]) else self.check_values(row[11], 'Vendor Discount'),
                                         'total_price': float(row[12]),
                                         'partner_unit_net_price': float(row[13]),
-                                        'partner_discount': 0 if pd.isnull(row[14]) else float(row[14]),
-                                        'mergin': 0 if pd.isnull(row[16]) else float(row[16]),
-                                        'conditions': 0 if pd.isnull(row[15]) else float(row[15]),
-                                        'price_unit':float(row[17]),
-                                        'price_subtotal': float(row[18]),
+                                        'partner_discount': 0 if pd.isnull(row[14]) else self.check_values(row[14], 'Partner Discount'),
+                                        'mergin': 0 if pd.isnull(row[16]) else self.check_values(row[16], 'Margin'),
+                                        'conditions': 0 if pd.isnull(row[15]) else self.check_values(row[15], 'Conditions'),
+                                        'price_unit':self.check_values(row[17], 'Unit Selling Price'),
+                                        'price_subtotal':self.check_values(row[18], 'Total Selling Price'),
 
 
                                     }    

@@ -24,11 +24,11 @@ class SaleOrderLinesImportWizard(models.TransientModel):
         }
     
 
-    def download_order_lines(self):
-        return {
-            'type': 'ir.actions.act_url',
-            'url': '/web/binary/download_document_with_data?model=sale.order.lines.import.wizard&id=%s&order_id=%s' % (self.id, self.order_id.id),
-            'target': 'new',
-        }
+    # def download_order_lines(self):
+    #     return {
+    #         'type': 'ir.actions.act_url',
+    #         'url': '/web/binary/download_document_with_data?model=sale.order.lines.import.wizard&id=%s&order_id=%s' % (self.id, self.order_id.id),
+    #         'target': 'new',
+    #     }
       
       

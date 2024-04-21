@@ -148,15 +148,17 @@ class QuotationReportXlsx(models.AbstractModel):
                             sheet.write(index+1, 8, line.cost)
                             sheet.write(index+1, 9, line.pricing_term or "--")
                             sheet.write(index+1, 10, line.product_uom_qty)
-                            sheet.write(index+1, 11, line.unit_net_price)
+                            row_num = index+2
+                            sheet.write_formula(index+1, 11, f'=ROUND(I{row_num}-(I{row_num}*(M{row_num}/100)),2)')
                             sheet.write(index+1, 12, line.discount_metra)
-                            sheet.write(index+1, 13, line.total_price)
-                            sheet.write(index+1, 14, line.partner_unit_net_price)
+                            sheet.write_formula(index+1, 13, f'=ROUND((K{row_num} * L{row_num}),2)')
+                            sheet.write_formula(index+1, 14, f'=ROUND(I{row_num}-(I{row_num}*(P{row_num}/100)),2)')
                             sheet.write(index+1, 15, line.partner_discount)
                             sheet.write(index+1, 16, line.conditions)
                             sheet.write(index+1, 17, line.mergin)
-                            sheet.write(index+1, 18, line.price_unit)
-                            sheet.write(index+1, 19, line.price_subtotal)
+                            sheet.write_formula(index+1, 18, f'=(L{row_num}*(1+Q{row_num}/100))/(1-R{row_num}/100)')
+                            sheet.write_formula(index+1, 19, f'=S{row_num}*K{row_num}')
+                          
                         else:
                             sheet.write(index+1, 0, line.line_number or index+1)  
                             sheet.write(index+1, 1, line.product_template_id.name)
@@ -168,15 +170,18 @@ class QuotationReportXlsx(models.AbstractModel):
                             sheet.write(index+1, 7, line.cost)
                             sheet.write(index+1, 8, line.pricing_term or "--")
                             sheet.write(index+1, 9, line.product_uom_qty)
-                            sheet.write(index+1, 10, line.unit_net_price)
+                            row_num = index+2
+                            sheet.write_formula(index+1, 10, f'=ROUND(H{row_num}-(H{row_num}*(L{row_num}/100)),2)')
+
                             sheet.write(index+1, 11, line.discount_metra)
-                            sheet.write(index+1, 12, line.total_price)
-                            sheet.write(index+1, 13, line.partner_unit_net_price)
+                            sheet.write_formula(index+1, 12, f'=ROUND((J{row_num} * K{row_num}),2)')
+                            sheet.write_formula(index+1, 13, f'=ROUND(H{row_num}-(H{row_num}*(O{row_num}/100)),2)')
                             sheet.write(index+1, 14, line.partner_discount)
                             sheet.write(index+1, 15, line.conditions)
                             sheet.write(index+1, 16, line.mergin)
-                            sheet.write(index+1, 17, line.price_unit)
-                            sheet.write(index+1, 18, line.price_subtotal)
+                            sheet.write_formula(index+1, 17, f'=(K{row_num}*(1+P{row_num}/100))/(1-Q{row_num}/100)')
+                            sheet.write_formula(index+1, 18, f'=R{row_num}*J{row_num}')
+                           
 
                 
         else:

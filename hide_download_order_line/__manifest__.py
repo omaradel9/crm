@@ -14,7 +14,7 @@
 
     ],
     'sequence':'-1',
-    "depends": ["base","sale","condition_filed"],
+    "depends": ["base","sale","condition_filed","one2many_search_widget"],
 
     'installable': True,
     'application': True,

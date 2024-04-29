@@ -8,6 +8,9 @@ from odoo.exceptions import  ValidationError
 class SaleOrderLinesImportWizard(models.TransientModel):
     _inherit = 'sale.order.lines.import.wizard'
 
+   
+
+    
 
 
     def check_values(self,value,label):
@@ -199,22 +202,13 @@ class SaleOrderLinesImportWizard(models.TransientModel):
             file_like_object = io.BytesIO(sale_order_line_data)
             data = pd.read_excel(file_like_object)
             df = pd.DataFrame(data)
-
             if self.order_id:
                 line_id = self.env['sale.order.line'].search([('order_id', '=', self.order_id.id)])
-
-                if self.order_id.import_lines_type == 'update_lines':
+                if self.import_lines_types == 'update_lines':
                     line_id.unlink()
                     self.insert_lines_with_duration(df)
-               
-
-                        
-            
-                        
-            
-                elif self.order_id.import_lines_type == 'add_lines':
+                elif self.import_lines_types == 'add_lines':
                     self.insert_lines_with_duration(df)
-
                 else:
                     raise ValidationError('You need to select value from the Import Type Field')    
 

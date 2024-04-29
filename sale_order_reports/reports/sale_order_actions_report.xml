@@ -35,20 +35,11 @@
     
     </template> 
 
-    
-    
-
-
-  
-
-   
     <template id="custom_sale_order_action_report_pdf">
         <t t-call="web.html_container">
             <t t-foreach="docs" t-as="doc">
-
                 <t t-call="web.basic_layout">
                         <t t-call="sale_order_reports.custom_external_layout_header">
-
                             <div class="page">
                                 <div class="oe_structure">
                                     <div class="row" >
@@ -59,7 +50,6 @@
                                         </div>
                                     </div>
                                     <div class="row" style="margin-top:30px; margin-bottom:30px">
-                                    
                                         <div class="col-6">
                                             <div class="details_div_left">
                                                 <div style="padding:3px">
@@ -72,23 +62,17 @@
                                                 </div>
                                                 <div style="padding:3px">
                                                     <p style="font-size:14px;font-weight: bold; display: inline;">Expiration Date: </p>
-                                                    <span style="display: inline; padding:7px" t-esc="doc.validity_date" t-options='{"widget": "date","format": "dd-MMM-yyyy"}'/>
+                                                    <span style="display: inline; padding:7px" t-esc="validity_date" t-options='{"widget": "date","format": "dd-MMM-yyyy"}'/>
                                                 </div>
                                                 <div style="padding:3px">
                                                     <p style="font-size:14px;font-weight: bold; display: inline;">End User: </p>
                                                     <span style="display: inline; padding:7px" t-esc="doc.end_user_id.name"/>
                                                 </div>
-                                            
-                                            
-                                            
-                                                
-                                            
-                                                
-                                            
-            
-                                            
+                                                <div  t-if="doc.po_no" style="padding:3px">
+                                                    <p style="font-size:14px;font-weight: bold; display: inline;">PO.no: </p>
+                                                    <span style="display: inline; padding:7px" t-esc="doc.po_no"/>
+                                                </div>
                                             </div>
-                                        
                                         </div>
                                         <div class="col-6">
                                             <div class="details_div_right">
@@ -97,53 +81,26 @@
                                                     <span style="display: block; padding:3px" t-esc="doc.user_id.name"/>
                                                     <span style="display: block; padding:3px" t-esc="doc.user_id.email"/>
                                                     <span style="display: block; padding:3px"  t-esc="doc.user_id.phone"/>
-
-
                                                 </div>
-
-                                                <!-- <div style="padding:3px">
-                                                    <h5 style="font-weight: bold;display: inline;">Sales Person: </h5>
-                                                    <span style="display: inline; padding:7px" t-esc="doc.user_id.name"/>
-                                                </div>
-                                                <div style="padding:3px">
-                                                    <h5 style="font-weight: bold;display: inline;">Sales Person Mail: </h5>
-                                                    <span style="display: inline; padding:7px" t-esc="doc.user_id.email"/>
-                                                </div>
-                                                <div style="padding:3px">
-                                                    <h5 style="font-weight: bold;display: inline;">Sales Phone: </h5>
-                                                    <span style="display: inline; padding:7px"  t-esc="doc.user_id.phone"/>
-                                                </div> -->
-                                            
-                                            
-                                            
-                                            
                                             </div>
                                         </div>
                                     </div>
+                                 
                                     <hr/>
                                     <div class="row"> 
                                         <div class="content_one col-12" style="margin-top:10px">
                                             <P style="font-weight: bold;">
                                                 We will be happy to supply any further information you may need and trust that your call on us to fill your order, which will receive our prompt and careful attention.
                                             </P>
-                                
-                
                                         </div>
-                                    
-                
                                     </div>
                                     <div class="row">
                                         <div class="content_two col-12" style="margin-bottom:10px; margin-top:10px">
                                             <P style="font-weight: bold;">
                                                 We are pleased to quote you the following:
                                             </P>
-                                
-                
                                         </div>
-                
                                     </div>
-                                  
-                                    
                                     <table class="table" style="border-bottom:5px solid white;">
                                         <thead style="background-color:#D3D3D3;border-bottom:5px solid white;">
                                             <tr>
@@ -154,18 +111,13 @@
                                                 <th style ="background-color:#D3D3D3;">Service Duration</th>
                                                 <th style ="background-color:#D3D3D3;">Unit Price</th>
                                                 <th style ="background-color:#D3D3D3;">Total Price</th>
-                                            
                                             </tr>
-                                            
-                                            
-                                            
                                         </thead>
                                         <tbody>
                                             <t t-set="last_row" t-value="0"/>
                                             <t t-set="counter" t-value="0"/>
                                             <t t-foreach="doc.order_line" t-as="product">
                                                 <t t-set="counter" t-value="counter + 1"/>
-                                            
                                                 <tr>
                                                     <t t-if="not product.display_type">
                                                         <td t-if="not product.line_number"><span t-out="counter"/></td>
@@ -175,10 +127,8 @@
                                                         <td><span t-esc="product.product_uom_qty"/></td>
                                                         <td t-if="not product.duration"><span>N/A</span></td>
                                                         <td t-if="product.duration"><span t-esc="product.duration"/></td>
-                                                    
                                                         <td style="text-align:right;"><span t-esc="doc.currency_id.symbol"/><span t-esc="'{0:,.2f}'.format(int(product.price_unit))"/></td>
                                                         <td style="text-align:right;"><span t-esc="doc.currency_id.symbol"/><span t-esc="'{0:,.2f}'.format(int(product.price_subtotal))"/></td>
-                                                        
                                                     </t>
                                                     <t t-elif="product.display_type == 'line_section'">
                                                         <td name="td_section_line" colspan="99">
@@ -190,141 +140,78 @@
                                                             <span t-field="product.name"/>
                                                         </td>
                                                     </t>
-                                                   
-                                                    
-                                                
                                                 </tr>
-                                            
                                             </t>
                                             <t t-set="last_row" t-value="counter"/>
-                                            
-                                    
                                         </tbody>
-                                            <!-- <div class="last-page" style="page-break-inside: avoid;">
-                                                <tfoot style="border-top:5px solid white; page-break-after: always;" class="last-page"> -->
-                                        
-                                                    <tr style="border-top:20px solid white;">
-                                                        <th  style ="background-color:#D3D3D3;border-bottom:1px solid #9f9e9e;text-align:left" colspan="6">Sub Totals In USD Excluding VAT</th>
-                                                        <td><span t-esc="doc.currency_id.symbol"/><span t-esc="'{0:,.2f}'.format(int(doc.amount_untaxed))"/></td>
-                                                    </tr>
-                                                    <tr>
-                                                        <th style="background-color:#D3D3D3; border-bottom:1px solid #9f9e9e; text-align:left" colspan="6">Value-Added Tax (VAT) (<span t-esc="doc.term_conditions_id.tax"/>%)</th>
-                                                        <td><span t-esc="doc.currency_id.symbol"/><span t-esc="'{0:,.2f}'.format(int(doc.amount_tax))"/></td>
-                                                    </tr>
-                                                    <tr>
-                                                        <th style ="background-color:#D3D3D3; border-bottom:1px solid #9f9e9e; text-align:left"  colspan="6">Total Prices In USD Including VAT</th>
-                                                        <td><span t-esc="doc.currency_id.symbol"/><span t-esc="'{0:,.2f}'.format(int(doc.amount_total))"/></td>
-                                                    </tr>
-            
-                                                
-                                            
-                                            
-                                            
-                                                <!-- </tfoot>
-
-                                            </div> -->
-                                            
-                                            
-                                                
-                                        
-                                    
-                                        
-                                            
-                                        
-                                    
+                                            <tr style="border-top:20px solid white;">
+                                                <th  style ="background-color:#D3D3D3;border-bottom:1px solid #9f9e9e;text-align:left" colspan="6">Sub Totals In USD Excluding VAT</th>
+                                                <td><span t-esc="doc.currency_id.symbol"/><span t-esc="'{0:,.2f}'.format(int(doc.amount_untaxed))"/></td>
+                                            </tr>
+                                            <tr>
+                                                <th style="background-color:#D3D3D3; border-bottom:1px solid #9f9e9e; text-align:left" colspan="6">Value-Added Tax (VAT) (<span t-esc="doc.term_conditions_id.tax"/>%)</th>
+                                                <td><span t-esc="doc.currency_id.symbol"/><span t-esc="'{0:,.2f}'.format(int(doc.amount_tax))"/></td>
+                                            </tr>
+                                            <tr>
+                                                <th style ="background-color:#D3D3D3; border-bottom:1px solid #9f9e9e; text-align:left"  colspan="6">Total Prices In USD Including VAT</th>
+                                                <td><span t-esc="doc.currency_id.symbol"/><span t-esc="'{0:,.2f}'.format(int(doc.amount_total))"/></td>
+                                            </tr>
                                     </table>
                                     <div class="terms_conditions" style="margin-top:30px">
                                         <div class="hedaer_terms">
                                             <h2>Terms and Conditions:</h2>
-                
                                         </div>
                                         <div class="content_terms">
                                             <div style="margin-bottom:15px">
                                                 <t t-if="doc.term_conditions_id.offer_validity">
                                                     <p style="display: inline; font-weight: bold;color:#2d2d85; font-size:20px">Offer Validity: </p>
-                                                    <span style="display: inline;color:#2d2d85; font-size:20px"><t t-esc="doc.term_conditions_id.offer_validity"/></span> 
-                                                    
+                                                    <span style="display: inline;color:#2d2d85; font-size:20px"><t t-esc="doc.term_conditions_id.offer_validity"/></span>
                                                 </t>
                                             </div>
                                             <div style="margin-bottom:15px">
                                                 <t t-if="doc.term_conditions_id.prices">
                                                     <p style="display: inline; font-weight: bold;color:#2d2d85; font-size:20px">Prices:</p>
-                                                    <span style="display: inline;color:#2d2d85; font-size:20px"><t t-esc="doc.term_conditions_id.prices"/></span> 
-                                                    
+                                                    <span style="display: inline;color:#2d2d85; font-size:20px"><t t-esc="doc.term_conditions_id.prices"/></span>
                                                 </t>
-                
                                             </div>
                                             <div style="margin-bottom:15px">
                                                 <t t-if="doc.term_conditions_id.payment">
                                                     <p style="display: inline; font-weight: bold;color:#2d2d85; font-size:20px">Payment:</p>
-                                                    <span style="display: inline;color:#2d2d85;font-size:20px"><t t-esc="doc.term_conditions_id.payment"/></span> 
-                                                    
+                                                    <span style="display: inline;color:#2d2d85;font-size:20px"><t t-esc="doc.term_conditions_id.payment"/></span>
                                                 </t>
-                
                                             </div>
                                             <div style="margin-bottom:15px">
                                                 <t t-if="doc.term_conditions_id.delivery">
                                                     <p style="display: inline; font-weight: bold;color:#2d2d85; font-size:20px">Delivery:</p>
                                                     <span style="display: inline;color:#2d2d85; font-size:20px"><t t-esc="doc.term_conditions_id.delivery"/></span>
-                                                    
                                                 </t>
-                
                                             </div>
                                             <div style="margin-bottom:15px">
                                                 <t t-if="doc.term_conditions_id.partial_delivery">
                                                     <p style="display: inline; font-weight: bold;color:#2d2d85;font-size:20px">Partial Delivery:</p>
-                                                    <span style="display: inline;color:#2d2d85;font-size:20px"><t t-esc="doc.term_conditions_id.partial_delivery"/></span> 
-                                                    
+                                                    <span style="display: inline;color:#2d2d85;font-size:20px"><t t-esc="doc.term_conditions_id.partial_delivery"/></span>
                                                 </t>
-                
                                             </div>
                                             <div style="margin-bottom:15px">
                                                 <t t-if="doc.term_conditions_id.responsibility">
                                                     <p style="display: inline; font-weight: bold; color:#2d2d85;font-size:20px">Responsibility:</p>
-                                                    <span style="display: inline; color:#2d2d85;font-size:20px"><t t-esc="doc.term_conditions_id.responsibility"/></span> 
-                                                    
+                                                    <span style="display: inline; color:#2d2d85;font-size:20px"><t t-esc="doc.term_conditions_id.responsibility"/></span>
                                                 </t>
-                
                                             </div>
                                             <div style="margin-bottom:15px;">
                                                 <t t-if="doc.term_conditions_id.required_information">
                                                     <p style="display: inline; font-weight: bold;color:#2d2d85;font-size:20px">Required Information:</p>
-                                                    <span style="display: inline;color:#2d2d85;font-size:20px"><t t-esc="doc.term_conditions_id.required_information"/></span> 
-                                                    
+                                                    <span style="display: inline;color:#2d2d85;font-size:20px"><t t-esc="doc.term_conditions_id.required_information"/></span>
                                                 </t>
-                
                                             </div>
-                                        
-                                        
-                                        
-                                        
-                                            
-                                        
-                                            
-                                        
-                                        
-                                            
-                                        
-                                        
-                                            
-                                        
-                
                                         </div>
-                
                                     </div>
-            
                                 </div>
-            
                             </div>
                         </t>
-        
                     </t>
-        
             </t>
-
         </t>
-        
-
     </template>
 
 

@@ -14,15 +14,10 @@
                             <button name="download_order_lines" string="Download Order lines" type="object" class="oe_highlight" 
                             invisible="1"
                             />
-    
-                            
                         </group>
-                        <group >
-    
-    
+                        <group>
                             <field name="order_lines_file" />
-                           
-    
+                            <field name="import_lines_types" />
                         </group>
                      
                         

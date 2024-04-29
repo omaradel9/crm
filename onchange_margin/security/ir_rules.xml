@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    
+    <record id="term_and_conditions_view_rule" model="ir.rule">
+        <field name="name">Only the created company can see its terms</field>
+        <field name="model_id" ref="model_terms_condtions_sales"/>       
+        <field name="domain_force">[('company_id','in',company_ids)]</field>
+        <field name="active" eval="True" />
+    </record>
+    
+
+</odoo>

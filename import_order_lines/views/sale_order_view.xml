@@ -7,23 +7,8 @@
             <field name="arch" type="xml">
                 <xpath expr="//header/button[@name='action_confirm'][1]" position="after">
                     <button string="Import Lines" name="open_order_line_wizard_custom" type="object" class="oe_highlight" />
-
-
-                    
                 </xpath>
-              
-               
-               
-             
-               
-                
-                
             </field>
         </record>
-    
-        
-    
     </data>
-    
-   
 </odoo>

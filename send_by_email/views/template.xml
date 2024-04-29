@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <template id="sale_order_portal_template_custom" inherit_id="sale.sale_order_portal_template">
+            <xpath expr="//div[@id='modalaccept']/div/form/main/p" position="after">
+                <p>By signing this document, I accept the
+                    <a target="_new" href="/terms">terms and conditions</a></p>
+                <div class="row">
+                    <div t-attf-class="form-group mb-1 col-xl-6">
+                        <label class="col-form-label label-optional" for="po_no">PO.no</label>
+                        <input type="text" name="po_no" id="po_no" t-attf-class="form-control"
+                               t-att-value="sale_order.po_no"/>
+                        <input type="hidden" id="sale_id" t-att-value="sale_order.id"/>
+                    </div>
+                </div>
+            </xpath>
+        </template>
+    </data>
+</odoo>

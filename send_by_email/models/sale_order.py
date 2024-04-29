@@ -4,7 +4,15 @@ from odoo import fields, models, api
 class SaleOrder(models.Model):
     _inherit = 'sale.order'
 
+    po_no = fields.Char('PO.no')
+    def action_quotation_sends(self):
 
+        MCM = self.env['mail.compose.message']
+        so_mcm_vals = self.action_quotation_send().get('context', {})
+        # Create record of compose mail
+        compose_msg = MCM.with_context(so_mcm_vals).create({})
+        compose_msg._onchange_template_id_wrapper()
+        compose_msg.action_send_mail()
     def _find_mail_template(self):
         """ Get the appropriate mail template for the current sales order based on its state.
 

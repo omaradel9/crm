@@ -8,4 +8,4 @@ class TermsConditionsSales(models.Model):
 
 
     payment_method = fields.Text('Payment Method')
-    incoterms = fields.Text('Incoterms')
+    incoterms = fields.Html('Incoterms')

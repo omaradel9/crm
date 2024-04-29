@@ -1,44 +1,46 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
-
-
     <record id="view_order_form_inherit" model="ir.ui.view">
         <field name="name">view.order.form.inherit</field>
         <field name="model">sale.order</field>
         <field name="inherit_id" ref="sale.view_order_form"/>
         <field name="arch" type="xml">
-          
-         
-         
-       
-           
-           
-     
-          
+            <xpath expr="//form/header/button[10]" position="replace">
+                <button name="action_quotation_sends" string="Send by Email"
+                        type="object" states="sent,sale" data-hotkey="g"
+                        context="{'validate_analytic': True}"/>
+            </xpath>
+            <xpath expr="//form/header/button[@name='action_quotation_send' and @states='draft']" position="after">
+                <button name="action_quotation_sends" string="Send by Email"
+                        type="object" states="draft" class="btn-primary"
+                        data-hotkey="g" context="{'validate_analytic': True}"/>
+            </xpath>
+            <xpath expr="//form/header/button[@name='action_quotation_send' and @states='draft']" position="attributes">
+                 <attribute name="invisible">1</attribute>
+            </xpath>
+            <xpath expr="//field[@name='payment_term_id']" position="after">
+                <field name="po_no"/>
+            </xpath>
             <xpath expr="//field[@name='term_conditions_id']" position="after">
                 <field name="brand_id"/>
-            
-          
-                
             </xpath>
             <xpath expr="//field[@name='brand_id']" position="attributes">
-                 <attribute name="string">Usage</attribute>            
-          
-                
+                 <attribute name="string">Usage</attribute>
             </xpath>
-          
-            
-
-            
-          
-            
-           
-          
-
-
-
-            
-            
+        </field>
+    </record>
+    <record id="view_company_form_term" model="ir.ui.view">
+        <field name="name">res.company.form.inherit.account</field>
+        <field name="model">res.company</field>
+        <field name="inherit_id" ref="base.view_company_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//notebook/page[@name='general_info']" position="after">
+                <page string="Terms and Conditions" name="terms_conditions">
+                    <label for="terms_type" string="Terms Type"/>
+                    <field name="terms_type"/>
+                    <field name="invoice_terms_html"/>
+                </page>
+            </xpath>
         </field>
     </record>
 </odoo>

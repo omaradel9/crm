@@ -19,7 +19,8 @@ class SaleOrderLinesImportWizard(models.TransientModel):
         string='Upload Order Lines',
     )
     order_id = fields.Many2one('sale.order')
-
+    import_lines_types = fields.Selection([('update_lines', 'Update Lines'), ('add_lines', 'Add Lines')],
+                                          default="update_lines", string='Import Lines Type')
 
 
 

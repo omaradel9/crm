@@ -12,7 +12,7 @@ class SaleOrder(models.Model):
     mode_of_shipment = fields.Text('Mode of Shipment')
 
     payment_method = fields.Text('Payment Method')
-    incoterms = fields.Text('Incoterms')
+    incoterms = fields.Html('Incoterms')
     user_id = fields.Many2one(
         comodel_name='res.users',
         string="Salesperson",

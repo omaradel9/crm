@@ -23,5 +23,5 @@ class SaleOrder(models.Model):
     @api.onchange('term_conditions_id')
     def _get_tax_ids(self):
         for rec in self.order_line:
-            rec.tax_id = self.term_conditions_id.tax_id
+            rec.tax_id = self.term_conditions_id.tax_id #new push
              

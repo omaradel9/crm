@@ -62,26 +62,27 @@
                                                 </div>
                                                 <div style="padding:3px">
                                                     <p style="font-size:14px;font-weight: bold; display: inline;">Expiration Date: </p>
-                                                    <span style="display: inline; padding:7px" t-esc="validity_date" t-options='{"widget": "date","format": "dd-MMM-yyyy"}'/>
+                                                    <span style="display: inline; padding:7px" t-esc="doc.validity_date" t-options='{"widget": "date","format": "dd-MMM-yyyy"}'/>
                                                 </div>
                                                 <div style="padding:3px">
                                                     <p style="font-size:14px;font-weight: bold; display: inline;">End User: </p>
                                                     <span style="display: inline; padding:7px" t-esc="doc.end_user_id.name"/>
                                                 </div>
-                                                <div  t-if="doc.po_no" style="padding:3px">
-                                                    <p style="font-size:14px;font-weight: bold; display: inline;">PO.no: </p>
-                                                    <span style="display: inline; padding:7px" t-esc="doc.po_no"/>
-                                                </div>
+                                              
                                             </div>
                                         </div>
                                         <div class="col-6">
                                             <div class="details_div_right">
                                                 <div style="padding:3px">
-                                                    <p style="font-size:14px;font-weight: bold;display: block;">Your account manager: </p>
-                                                    <span style="display: block; padding:3px" t-esc="doc.user_id.name"/>
+                                                    <p style="font-size:14px;font-weight: bold;display: inline;">Your account manager: </p>
+                                                    <span style="display: inline; padding:3px" t-esc="doc.user_id.name"/>
                                                     <span style="display: block; padding:3px" t-esc="doc.user_id.email"/>
                                                     <span style="display: block; padding:3px"  t-esc="doc.user_id.phone"/>
                                                 </div>
+                                            </div>
+                                            <div  t-if="doc.po_no" style="padding:3px">
+                                                <p style="font-size:14px;font-weight: bold; display: inline;">PO.no: </p>
+                                                <span style="display: inline; padding:7px" t-esc="doc.po_no"/>
                                             </div>
                                         </div>
                                     </div>

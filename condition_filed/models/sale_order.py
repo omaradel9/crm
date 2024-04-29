@@ -5,7 +5,6 @@ from odoo.exceptions import ValidationError
 class SaleOrder(models.Model):
     _inherit = 'sale.order'
 
-    
     import_lines_types = fields.Selection([('update_lines', 'Update Lines'), ('add_lines', 'Add Lines')],
                                           default="update_lines", string='Import Lines Type')
 

@@ -9,7 +9,7 @@
         <field name="arch" type="xml">
           
          
-            <xpath expr="//page[@name='customer_signature']" position="after">
+            <xpath expr="//page[@name='customer_signature']" position="replace">
                 <page name="terms_and_conditions" string="Terms and Conditions">
                     <group string="Terms and Conditions">
                         <group >

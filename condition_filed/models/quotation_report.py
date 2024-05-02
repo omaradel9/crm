@@ -42,6 +42,7 @@ class QuotationReportXlsx(models.AbstractModel):
     
         sheet = workbook.add_worksheet('Sale Order Summary')
         sheet.set_column(3, 3, 20)
+        sheet.set_column(2, 2, 20)
         sheet.set_column(1, 1, 20)
         sheet.set_column(6, 6, 20)
         sheet.set_column(8, 8, 20)

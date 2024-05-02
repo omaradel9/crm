@@ -120,10 +120,12 @@ class SaleOrderLinesImportWizard(models.TransientModel):
                     
                     }
                     sale_order_line = self.env['sale.order.line'].create(sale_order_line_values) 
-                else:        
+                else:       
                     if pd.isnull(row[11]) or row[11] == 0 or pd.isnull(row[14]) or row[14] == 0 or pd.isnull(row[18]) or row[18] == 0 or pd.isnull(row[19]) or row[19] == 0:
                         unit_vendor_list_price =0 if pd.isnull([row[8]]) else self.check_values(row[8], 'Unit Vendor List Price')
+
                         dic_metra = 0 if pd.isnull([row[12]]) else self.check_values(row[12], 'Vendor Discount')
+
                         qty= 0 if pd.isnull([row[10]]) else self.check_values(row[10],'Quantity')
 
                         unit_net_price  = round(unit_vendor_list_price - ((unit_vendor_list_price * dic_metra) / 100), 2)
@@ -163,7 +165,7 @@ class SaleOrderLinesImportWizard(models.TransientModel):
                                 'price_unit':unit_selling_price,
                                 'price_subtotal': total_selling_price,
                             }
-                    else:
+                    else: 
                         sale_order_line_values = {
                                 'order_id': self.order_id.id,
                                 'line_number':' ' if pd.isnull([row[0]]) else row[0],

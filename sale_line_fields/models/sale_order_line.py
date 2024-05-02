@@ -6,10 +6,15 @@ class SaleOrderLine(models.Model):
     _inherit="sale.order.line"
 
 
-    partner_unit_net_price = fields.Float(string='Partner Unit Net Price', compute = '_compute_partner_unit_net_price')
-    partner_discount= fields.Float(string='Partner Discount (%)')
-    unit_net_price = fields.Float(string='Unit Net Price', compute='_compute_unit_net_price')
-    total_price = fields.Float(string='Total Price', compute='_compute_total_price')
+    # partner_unit_net_price = fields.Float(string='Partner Unit Net Price', compute = '_compute_partner_unit_net_price')
+    # partner_discount= fields.Float(string='Partner Discount (%)')
+    # unit_net_price = fields.Float(string='Unit Net Price', compute='_compute_unit_net_price')
+    # total_price = fields.Float(string='Total Price', compute='_compute_total_price')
+
+    partner_unit_net_price = fields.Float(string='Partner Unit Net Price',readonly=True )
+    partner_discount= fields.Float(string='Partner Discount (%)',)
+    unit_net_price = fields.Float(string='Unit Net Price', readonly=True)
+    total_price = fields.Float(string='Total Price',readonly=True )
 
 
 

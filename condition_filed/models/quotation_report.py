@@ -106,9 +106,9 @@ class QuotationReportXlsx(models.AbstractModel):
             col_num = 0
             sheet.write(13,col_num,'Items',format_2) 
             col_num+=1   
-            sheet.write(13,col_num,'Metra Code',format_2)    
-            col_num+=1
             sheet.write(13,col_num,'MPN',format_2)    
+            col_num+=1
+            sheet.write(13,col_num,'Metra Code',format_2)    
             col_num+=1
             sheet.merge_range(13, col_num ,13,col_num + 2 ,'Product Description',format_2)
             col_num+=3

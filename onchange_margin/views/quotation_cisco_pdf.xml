@@ -7,8 +7,8 @@
                 <thead style="background-color:#D3D3D3;border-bottom:5px solid white;">
                     <tr>
                         <th style ="background-color:#D3D3D3;">Items</th>
-                        <th style ="background-color:#D3D3D3;width:200px">Metra Code</th>
                         <th style ="background-color:#D3D3D3;width:200px">MPN</th>
+                        <th style ="background-color:#D3D3D3;width:200px">Metra Code</th>
                         <th style ="background-color:#D3D3D3;width:200px">Product Description</th>
                         <th style ="background-color:#D3D3D3;">Quantity</th>
                         <t t-if="doc._check_duration_visiblity()">

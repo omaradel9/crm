@@ -107,7 +107,7 @@ class SaleOrderLinesImportWizard(models.TransientModel):
         for index, row in df.iterrows():
             product_id = self.env['product.product'].search([('name', '=', row[1])])
             if not product_id:
-                product_id = self.env['product.product'].create({'name': row[1]})
+                product_id = self.env['product.product'].create({'name': row[1],'description_sale': row[3]})
 
             if len(row) == 20:
                 print('-------------------------fffffffffffffffffffffff')

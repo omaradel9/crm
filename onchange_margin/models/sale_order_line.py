@@ -32,15 +32,17 @@ class SaleOrder(models.Model):
         for vals in vals_list:
             if vals.get('display_type') or self.default_get(['display_type']).get('display_type'):
                 vals['product_uom_qty'] = 0.0
-            # print('--------------------------------------wrrrrrrrrrrrrrrrrrrrrrrrr22222222222222222222',vals_list) 
-            vals['unit_net_price']  = round(vals['cost'] - ((vals['cost'] * vals['discount_metra']) / 100), 2)
-
-            vals['total_price'] = round((vals['unit_net_price'] * vals['product_uom_qty']), 2)
-            vals['partner_unit_net_price']  = round(vals['cost'] - (vals['cost'] * (vals['partner_discount'] / 100)), 2)
-            vals['price_unit'] = (vals['unit_net_price'] * (1+ vals['conditions']/100))/(1- vals['mergin']/100)     
+           
 
         lines = super().create(vals_list)
         for line in lines:
+            print('--------------------------------------wrrrrrrrrrrrrrrrrrrrrrrrr22222222222222222222',line.cost) 
+            line.unit_net_price  = round(line.cost - ((line.cost * line.discount_metra) / 100), 2)
+
+            line.total_price = round((line.unit_net_price * line.product_uom_qty), 2)
+            line.partner_unit_net_price  = round(line.cost - (line.cost * (line.partner_discount / 100)), 2)
+            line.price_unit = (line.unit_net_price * (1+ line.conditions/100))/(1- line.mergin/100)     
+
             if line.product_id and line.state == 'sale':
                 msg = _("Extra line with %s", line.product_id.display_name)
                 line.order_id.message_post(body=msg)
@@ -77,7 +79,6 @@ class SaleOrder(models.Model):
                     _('It is forbidden to modify the following fields in a locked order:\n%s')
                     % '\n'.join(fields.mapped('field_description'))
                 )
-        print('------------------------------', self) 
          
 
         result = super().write(values)
@@ -91,7 +92,7 @@ class SaleOrder(models.Model):
 
 
 
-    @api.onchange('cost','mergin','conditions','partner_discount','product_uom_qty','discount_metra')
+    @api.onchange('mergin','conditions','cost','partner_discount','product_uom_qty','discount_metra')
     def _compute_order_lines_values(self):
         print('----------------------change', self.cost)
 

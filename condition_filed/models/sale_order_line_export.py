@@ -17,27 +17,8 @@ class QuotationReportXlsx(models.AbstractModel):
 
         sheet = workbook.add_worksheet('Import Sale Order Lines')
         sheet.set_row(0, 40)
-        sheet.set_column(0, 0, 30)
-        sheet.set_column(1, 1, 30)
-        sheet.set_column(2, 2, 30)
-        sheet.set_column(3, 3, 30)
-        sheet.set_column(4, 4, 30)
-        sheet.set_column(5, 5, 30)
-        sheet.set_column(6, 6, 30)
-        sheet.set_column(7, 7, 30)
-        sheet.set_column(8, 8, 30)
-        sheet.set_column(9, 9, 30)
-        sheet.set_column(10, 10, 30)
-        sheet.set_column(11, 11, 30)
-        sheet.set_column(12, 12, 30)
-        sheet.set_column(13, 13, 30)
-        sheet.set_column(14, 14, 30)
-        sheet.set_column(15, 15, 30)
-        sheet.set_column(16, 16, 30)
-        sheet.set_column(17, 17, 30)
-        sheet.set_column(18, 18, 30)
-        sheet.set_column(19, 19, 30)
-        sheet.set_column(20, 20, 30)
+        sheet.set_column(0, 20, 30)
+       
 
 
         col =0

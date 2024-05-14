@@ -87,15 +87,15 @@
                           
                             <t t-else="">
                                 <tr style="border-top:20px solid white;">
-                                    <th  style ="background-color:#D3D3D3;border-bottom:1px solid #9f9e9e;text-align:left" colspan="5">Sub Totals In USD Excluding VAT</th>
+                                    <th  style ="background-color:#D3D3D3;border-bottom:1px solid #9f9e9e;text-align:left" colspan="6">Sub Totals In USD Excluding VAT</th>
                                     <td><span t-esc="doc.currency_id.symbol"/><span t-esc="'{0:,.2f}'.format(int(doc.amount_untaxed))"/></td>
                                 </tr>
                                 <tr>
-                                    <th style="background-color:#D3D3D3; border-bottom:1px solid #9f9e9e; text-align:left" colspan="5">Value-Added Tax (VAT) (<span t-esc="doc.term_conditions_id.tax"/>%)</th>
+                                    <th style="background-color:#D3D3D3; border-bottom:1px solid #9f9e9e; text-align:left" colspan="6">Value-Added Tax (VAT) (<span t-esc="doc.term_conditions_id.tax"/>%)</th>
                                     <td><span t-esc="doc.currency_id.symbol"/><span t-esc="'{0:,.2f}'.format(int(doc.amount_tax))"/></td>
                                 </tr>
                                 <tr>
-                                    <th style ="background-color:#D3D3D3; border-bottom:1px solid #9f9e9e; text-align:left"  colspan="5">Total Prices In USD Including VAT</th>
+                                    <th style ="background-color:#D3D3D3; border-bottom:1px solid #9f9e9e; text-align:left"  colspan="6">Total Prices In USD Including VAT</th>
                                     <td><span t-esc="doc.currency_id.symbol"/><span t-esc="'{0:,.2f}'.format(int(doc.amount_total))"/></td>
                                 </tr>
                             </t>

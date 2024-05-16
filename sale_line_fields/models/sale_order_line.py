@@ -14,7 +14,7 @@ class SaleOrderLine(models.Model):
     partner_unit_net_price = fields.Float(string='Partner Unit Net Price',readonly=True )
     partner_discount= fields.Float(string='Partner Discount (%)',)
     unit_net_price = fields.Float(string='Unit Net Price', readonly=True)
-    total_price = fields.Float(string='Total Price',readonly=True )
+    total_price = fields.Float(string='Total Price')
 
 
 

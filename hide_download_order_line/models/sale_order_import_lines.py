@@ -126,7 +126,7 @@ class SaleOrderLinesImportWizard(models.TransientModel):
 
                         dic_metra = 0 if pd.isnull([row[12]]) else self.check_values(row[12], 'Vendor Discount')
 
-                        qty= 1 if pd.isnull([row[10]])  else self.check_values(row[10],'Quantity')
+                        qty= 0 if pd.isnull([row[10]])  else self.check_values(row[10],'Quantity')
 
                         # unit_net_price  = round(unit_vendor_list_price - ((unit_vendor_list_price * dic_metra) / 100), 2)
                         # total_price = round((unit_net_price * qty), 2)
@@ -136,9 +136,13 @@ class SaleOrderLinesImportWizard(models.TransientModel):
                         # conditions = 0 if pd.isnull([row[16]]) else self.check_values(row[16], 'Conditions')
                         # unit_selling_price  = (unit_net_price * (1+ conditions/100))/(1- margin/100)
                         # total_selling_price = unit_selling_price * qty 
+                        
                         total_price = 0 if pd.isnull([row[13]]) else self.check_values(row[13], 'Total Price')
+                        if qty != 0:
+                            unit_net_price  = round(total_price/qty,2)
+                        else:
+                            unit_net_price = 0
 
-                        unit_net_price  = round(total_price/qty,2)
                         partner_discount = 0 if pd.isnull([row[15]]) else self.check_values(row[15], 'Partner Discount')
                         partner_unit_net_price  = round(unit_net_price - (unit_net_price * (partner_discount / 100)), 2)
                         margin= 0 if pd.isnull([row[17]]) else self.check_values(row[17], 'Margin')

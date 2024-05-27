@@ -55,7 +55,6 @@ class SaleOrder(models.Model):
     def _compute_order_lines_margin(self):
         for rec in self.order_line:
             rec.mergin = self.margin
-            print('---=====================================chhh')
             # rec.unit_net_price  = round(rec.cost - ((rec.cost * rec.discount_metra) / 100), 2)
 
             # rec.total_price = round((rec.unit_net_price * rec.product_uom_qty), 2)

@@ -328,10 +328,10 @@ This document is Metra's system generated Document and does not require anyone s
             sheet.merge_range(table_row, 3, table_row, 9,'An entity nominated by the Customer to whom Metra shall send its invoices for payment of the Products price or any other dues under these terms and conditions.', format_5)
             table_row += 2
             sheet.merge_range(table_row, 0, table_row, 2,'1.5 “Ship-to party”', format_5)
-            sheet.merge_range(table_row, 3, table_row, 9,'Any entity that will receive the Products from Metra. This can be either the Customer or a third party nominated by the Customer.', format_5)
+            sheet.merge_range(table_row, 3, table_row, 9,'Any entity that will receive the Products from Metra. This can be either the Customer or a third party nominated by the Customer. ', format_5)
             table_row += 2
             sheet.merge_range(table_row, 0, table_row, 2,'1.6 “End-User”', format_5)
-            sheet.merge_range(table_row, 3, table_row, 9,'An entity that has been provided to Metra by the Sold-to party, where the Sold-to party has informed Metra that they intend to resell the goods to it. It is mandatory that the Sold-to party doesn’t resell the goods to any party other than the end-user intended.', format_5)
+            sheet.merge_range(table_row, 3, table_row, 9,'An entity that has been provided to Metra by the Sold-to party, where the Sold-to party has informed Metra that they intend to resell the goods to it. It is mandatory that the Sold-to party doesn’t resell the goods to any party other than the end-user intended. ', format_5)
             table_row += 2
 
 
@@ -355,8 +355,7 @@ The Customer cannot cancel or change a Purchase Order(s) or Order Confirmation s
 The Customer agrees that all invoices and any other amounts due under this agreement are payable solely to us in the currency of payment stated above, in full without any set off, counter-claims, abatement, or reduction. We may at our sole discretion apply payments made to us (whether by the Customer or otherwise) to pay late payment charges, invoices overdue interest, or any outstanding amounts. The Customer must pay all sums due to us under this agreement, including invoices and other charges in full, without abatement, discount, reduction, set off, dispute or counterclaim. The Customer will not assert against Metra any claims the Customer may have against any third party including the manufacturer or original supplier or shipper of the Products. We have no obligation to perform any obligation by any third party. Metra may set off against any amounts owed by Metra to the Customer any amounts due from the Customer to Metra (including those prospectively or contingently due where in our reasonable opinion they are likely to become payable). 
 Metra may at any time and at its sole discretion cancel a Customer’s credit line. In case of cancellation of the credit line, all invoices become immediately due.
 Advance payments are due on the contract date and are non-refundable. Metra reserves the right to settle advance payments against any other due amounts, including but not limited to finance charges, holding fees or any other dues.
-If the Customer is purchasing the Products from Metra’s subsidiary in Egypt (Metra Computers S.A.E) it shall have the right to select the currency in which the order shall be paid, hereinafter referred to as the “payment currency”, at the time of receiving the quotation from Metra. Metra shall have the right to give different prices depending on the payment currency. If a Customer selects payment in a foreign currency (not Egyptian Pounds), then the Customer must pay in the foreign currency as specified in the contract of sale. If a Customer selects payment in local currency (Egyptian Pounds), then Customer must pay at the higher of, the rate declared by the Central Bank of Egypt or any local Egyptian bank on the date of payment or due date of invoice (whichever is higher).'''
-         
+If the Customer is purchasing the Products from any of Metra’s subsidiaries in Egypt, the Customer shall have the right to select the currency in which the order shall be paid, hereinafter referred to as the “payment currency”, at the time of receiving the quotation from Metra. Metra shall have the right to give different prices depending on the payment currency. If a Customer selects payment in a foreign currency (not Egyptian Pounds), then the Customer must pay in the foreign currency as specified in the contract of sale. If a Customer selects payment in local currency (Egyptian Pounds), then Customer must pay at the higher of, the rate declared by the Central Bank of Egypt or any local Egyptian bank on the date of payment or due date of invoice (whichever is higher).'''
             sheet.merge_range(table_row, 0, table_row, 9,text_term_4_1, format_5)
             table_row += 2
 
@@ -364,20 +363,19 @@ If the Customer is purchasing the Products from Metra’s subsidiary in Egypt (M
 
             sheet.merge_range(table_row, 0, table_row, 9,'5. Fair Pricing', format_6)
             table_row += 1
-            text_term_5_1='''Subject to the compliance with anti-trust laws, where Metra discloses to the Customer a special discount for a specific End-User, the Customer acknowledges and certifies that the full amount of the discount reflected in Metra’s offer is necessary for the Customer to close any corresponding transactions with End-User, either directly or through a reseller. Accordingly, the Customer is responsible for ensuring that the End-User receives the entire financial benefit of the discount reflected in Metra’s offer. Metra will provide an Estimated End User Price (“EEP”) which will be Metra’s estimate of the highest price that End-User could pay while also receiving the entire benefit of the discount. While the Customer has the exclusive right to determine their own sales prices for Metra’s Products(s), the Customer must comply with the foregoing obligation to pass down the financial benefit of the discount to the End-User. '''
-         
+            text_term_5_1='''Subject to compliance with anti-trust laws, where Metra discloses to the Customer a special discount for a specific End-User, the Customer acknowledges and certifies that the full amount of the discount reflected in Metra’s offer is necessary for the Customer to close any corresponding transactions with End-User, either directly or through a reseller. Accordingly, the Customer is responsible for ensuring that the End-User receives the entire financial benefit of the discount reflected in Metra’s offer. Metra will provide an Estimated End User Price (“EEP”) which will be Metra’s estimate of the highest price that End-User could pay while also receiving the entire benefit of the discount. While the Customer has the exclusive right to determine their own sales prices for Metra’s Products(s), the Customer must comply with the foregoing obligation to pass down the financial benefit of the discount to the End-User. '''
             sheet.merge_range(table_row, 0, table_row, 9,text_term_5_1, format_5)
             table_row += 2
          
             sheet.merge_range(table_row, 0, table_row, 9,'6. Delivery/Title/Risk', format_6)
             table_row += 1
             tetx_term_6_1='''The Delivery period in the Order confirmation is approximate and based solely on estimates. Any failure to comply with such dates shall not constitute a breach of contract by Metra. If no dates are specified, delivery will occur within a reasonable timeframe, considering the standard delivery duration for those specific Products from the manufacturer concerned. Handover of Products will take place within a reasonable timeframe following their delivery from the manufacturer, accounting for the typical duration required for arranging and executing shipping to the designated handover location, as well as completing any necessary formalities. Metra shall not be liable for any delays in delivery caused by the manufacturer of the Products. 
-Partial deliveries may be made. The place of delivery is stated in the Order confirmation. Title to Products passes on full payment and until then the Customer must insure the Products and the Customer must not modify or pledge them. The Customer may use the Products, without modification, in the ordinary course of business. Metra reserves the rights to enter the storage premises to repossess the Products. If the Customer sells them before title passes, the Customer will become Metra's agent and the proceeds of such sale shall be held on Metra's behalf separately from the Customer's general funds. Metra may sue for the Price before title passes. All risk of the loss of the Products passes to the Customer upon delivery. 
+Partial deliveries may be made. Metra may, at its sole discretion, deliver and invoice the Products as and when they become available. If Customer refuses to accept the Products, they shall be deemed accepted, and payment for the Products shall be due as per the due date stated on the invoice.
+The place of delivery is stated in the Order confirmation. Title to Products passes on full payment and until then the Customer must insure the Products and the Customer must not modify or pledge them. The Customer may use the Products, without modification, in the ordinary course of business. Metra reserves the rights to enter the storage premises to repossess the Products. If the Customer sells them before title passes, the Customer will become Metra's agent and the proceeds of such sale shall be held on Metra's behalf separately from the Customer's general funds. Metra may sue for the Price before title passes. All risk of the loss of the Products passes to the Customer upon delivery. 
 The Customer acknowledges and understands that any of Metra’s affiliates or subsidiaries may provide the Customer with the Products.
 Upon receiving the Products, the Customer or the Ship-to party must sign the delivery note. Any missing or damaged packaging should be noted on the delivery note prior to signing it by the Customer or the Ship-to party. Metra shall be entitled to assume that any person who both reasonably appears and claims to have authority to accept delivery who signs a note in respect of the Products on behalf of the Customer or the End-User (if Metra has agreed to deliver direct) does in fact have the authority.
 Customer understands and agrees that Metra may accept an order therefrom but such order might not be released for delivery if the Customer has any debts or overdue payments to Metra. It is the Customer’s responsibility to ensure that it is within credit limit and has no overdue invoices in order for an order to be released for delivery by Metra.
 The Customer undertakes not to sell the Products purchased from Metra to any party other than the End-user intended and previously declared to Metra.'''
-          
             sheet.merge_range(table_row, 0, table_row, 9,tetx_term_6_1, format_5)
             table_row += 2
           
@@ -385,7 +383,6 @@ The Customer undertakes not to sell the Products purchased from Metra to any par
             sheet.merge_range(table_row, 0, table_row, 9,'7. Service/ Software Orders', format_6)
             table_row += 1
             text_term_7_1='''Any item in an order which relates to a service/training which is to be provided by the Original Equipment Manufacturer (“OEM”) is the sole responsibility of the respective OEM. Metra’s role for such services/training is limited to procuring the same from the respective OEM as a part number and invoicing the same part number to Customer without any obligation on Metra for services being rendered by the respective OEM. Not rendering of services in a timely manner by any OEM will not entitle Customer to hold any payments of Metra. A service/software will be deemed accepted by the Customer once the OEM or Metra issues an invoice pertaining to the ordered service/software. Upon issuance of the invoice from Metra to the Customer, the Customer is obliged to pay for the ordered service/software on the due date mentioned on the invoice. '''
-          
             sheet.merge_range(table_row, 0, table_row, 9,text_term_7_1, format_5)
             table_row += 2
           
@@ -411,7 +408,6 @@ To the greatest extent permitted under applicable law, any warranty from Metra i
             sheet.merge_range(table_row, 0, table_row, 9,'11. Export Control', format_6)
             table_row += 1
             tetx_term_11_1='''The Customer acknowledges that Products(s) may include technology and Software which is subject to US and EU export control laws and laws of the country where it is delivered or used: the Customer must abide by all these laws. Products may not be sold, leased or transferred to restricted / embargoed end users, or countries, or for a user involved in weapons of mass destruction or genocide, without the prior consent of the US or competent EU government. The Customer understands and acknowledges that US and EU restrictions vary regularly and depending on Products, therefore the Customer must refer to the most current US and EU regulations.'''
-           
             sheet.merge_range(table_row, 0, table_row, 9,tetx_term_11_1, format_5)
             table_row += 2
           
@@ -427,7 +423,6 @@ To the greatest extent permitted under applicable law, any warranty from Metra i
             tetx_term_13_1='''Metra’s vendors shall have the right to review and audit, upon written request and during the normal business hours, Customer’s processes, books, records and accounting practices involving transactions related to this Agreement and to any relevant Agreement where Metra is the supplier of the Products.
 Upon notice from Metra, the Customer shall provide Metra’s vendors and/or any representative designated by Metra’s vendors, with access to and any assistance that may be required for the purpose of performing audits or inspection of the services and the business of the Customer relating to this Agreement or any relevant Agreement. If the Customer is notified of not being in compliance to any law or audit requirement by an auditor designated by Metra’s vendors, the Customer shall promptly take action to comply with such requirements and shall bear all the cost incurred for any such compliance.
 Customer understands and agrees that Metra shall have the right to disclose Customer’s records to its vendors, and this shall not be deemed as a breach of confidentiality by Metra.'''
-           
             sheet.merge_range(table_row, 0, table_row, 9,tetx_term_13_1, format_5)
            
             table_row += 2
@@ -435,7 +430,6 @@ Customer understands and agrees that Metra shall have the right to disclose Cust
             sheet.merge_range(table_row, 0, table_row, 9,'14. Assignment', format_6)
             table_row += 1
             tetx_term_14_1='''Metra shall at all times have the right to assign any receivables, rights and/or obligations arising from this Agreement. The Customer hereby acknowledges and accepts such assignment.'''
-           
             sheet.merge_range(table_row, 0, table_row, 9,tetx_term_14_1, format_5)
            
             table_row += 2
@@ -443,8 +437,7 @@ Customer understands and agrees that Metra shall have the right to disclose Cust
             sheet.merge_range(table_row, 0, table_row, 9,'15. Communication & Confidentiality', format_6)
             table_row += 1
             tetx_term_15_1='''Metra shall not be responsible for any communication made with its employees via email, phone, fax, or SMS regarding credit notes, discounts, or purchase commitments. Only formal credit notes, purchase orders, or contracts issued by Metra shall be considered valid.
-Each party must treat all information received from the other marked "confidential" or reasonably obvious to be confidential as it would treat its own confidential information.'''
-      
+Each party must treat all information received from the other marked "confidential" or reasonably obvious to be confidential as it would treat its own confidential information. '''
             sheet.merge_range(table_row, 0, table_row, 9,tetx_term_15_1, format_5)
             
             table_row += 2
@@ -452,21 +445,18 @@ Each party must treat all information received from the other marked "confidenti
             sheet.merge_range(table_row, 0, table_row, 9,'16. Governing Law', format_6)
             table_row += 1
             tetx_term_16_1='''These terms and all disputes in connection with these terms are governed by the substantive laws in force in the country in which the Metra billing entity is domiciled, without regard to its conflict of law rules; and the exclusive place of jurisdiction for any dispute will be in that country. In any event, neither the U.N. Convention on Contracts for the International Sale of Goods, nor the Uniform Computer Information Transaction Act will apply to these terms or any dispute.'''
-      
             sheet.merge_range(table_row, 0, table_row, 9,tetx_term_16_1, format_5)
             
             table_row += 2
             sheet.merge_range(table_row, 0, table_row, 9,'17. Digital Acceptance', format_6)
             table_row += 1
             tetx_term_17_1='''The Customer agrees that any contract, agreement, or document requiring signatures, including this Agreement, may be executed electronically. Electronic signatures and digital copies hold the same legal validity as traditional ink signatures. Additionally, submissions via 'submit' buttons or similar electronic means are deemed valid and binding. The Customer agrees not to contest the validity of electronically executed documents.'''
-      
             sheet.merge_range(table_row, 0, table_row, 9,tetx_term_17_1, format_5)
             
             table_row += 2
             
 
             tetx_sign='''The signature below represents the Customer’s acknowledgement and acceptance of the order/quotation from Metra, which shall be governed by the terms set forth above.'''
-      
             sheet.merge_range(table_row, 0, table_row, 9,tetx_sign, format_5)
             
             table_row += 2

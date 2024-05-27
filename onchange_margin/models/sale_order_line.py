@@ -23,6 +23,7 @@ class SaleOrder(models.Model):
         # not anymore since the field must be considered editable for product configurator logic
         # without modifying the related product_id when updated.
         domain=[('sale_ok', '=', True)])
+  
     
 
 
@@ -36,7 +37,6 @@ class SaleOrder(models.Model):
 
         lines = super().create(vals_list)
         for line in lines:
-            print('--------------------------------------wrrrrrrrrrrrrrrrrrrrrrrrr22222222222222222222',line.cost) 
             if line.product_uom_qty != 0:
                 line.unit_net_price = round(line.total_price / line.product_uom_qty, 2)
             else:
@@ -64,7 +64,6 @@ class SaleOrder(models.Model):
 
     @api.onchange('mergin','conditions','total_price','partner_discount','product_uom_qty','discount_metra')
     def _compute_order_lines_values(self):
-        print('----------------------change', self.cost)
 
 
        

@@ -1,0 +1,28 @@
+<odoo>
+    <data noupdate="0">
+        <record id="view_add_date_fields_order_line_form_inherit" model="ir.ui.view">
+            <field name="name">view.add.date.fields.order.line.form.inherit</field>
+            <field name="model">sale.order</field>
+            <field name="inherit_id" ref="sale.view_order_form"/>
+            <field name="arch" type="xml">
+
+              
+                <xpath expr="//field[@name='order_line']/tree/field[@name='conditions']" position="after">
+                    <field name="serial_number"  optional="hide"/>
+                    <field name="last_date_of_support" optional="hide"/>
+                    <field name="start_date" optional="hide"/>
+                    <field name="end_date" optional="hide"/>
+                    <field name="product_number" optional="hide"/>
+             
+                 
+              
+                    
+                </xpath>
+              
+
+
+            
+            </field>
+        </record>
+    </data>
+</odoo>

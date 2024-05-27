@@ -17,9 +17,9 @@ class SaleOrderLinesImportWizard(models.TransientModel):
 
         if isinstance(value, str):
             raise ValidationError("Invalid value for %s"% label)
+        
         else:
             num = float(value)
-
         return num  
     # def insert_lines_without_durtaion(self, df):
     #     for index, row in df.iterrows():
@@ -110,7 +110,6 @@ class SaleOrderLinesImportWizard(models.TransientModel):
                 product_id = self.env['product.product'].create({'name': row[1],'description_sale': row[3]})
 
             if len(row) == 20:
-                print('-------------------------fffffffffffffffffffffff')
 
                 if pd.isnull(row[1]):
                     sale_order_line_values = {
@@ -128,15 +127,7 @@ class SaleOrderLinesImportWizard(models.TransientModel):
 
                         qty= 0 if pd.isnull([row[10]])  else self.check_values(row[10],'Quantity')
 
-                        # unit_net_price  = round(unit_vendor_list_price - ((unit_vendor_list_price * dic_metra) / 100), 2)
-                        # total_price = round((unit_net_price * qty), 2)
-                        # partner_discount = 0 if pd.isnull([row[15]]) else self.check_values(row[15], 'Partner Discount')
-                        # partner_unit_net_price  = round(unit_vendor_list_price - (unit_vendor_list_price * (partner_discount / 100)), 2)
-                        # margin= 0 if pd.isnull([row[17]]) else self.check_values(row[17], 'Margin')
-                        # conditions = 0 if pd.isnull([row[16]]) else self.check_values(row[16], 'Conditions')
-                        # unit_selling_price  = (unit_net_price * (1+ conditions/100))/(1- margin/100)
-                        # total_selling_price = unit_selling_price * qty 
-                        
+                   
                         total_price = 0 if pd.isnull([row[13]]) else self.check_values(row[13], 'Total Price')
                         if qty != 0:
                             unit_net_price  = round(total_price/qty,2)
@@ -149,6 +140,8 @@ class SaleOrderLinesImportWizard(models.TransientModel):
                         conditions = 0 if pd.isnull([row[16]]) else self.check_values(row[16], 'Conditions')
                         unit_selling_price  = (unit_net_price * (1+ conditions/100))/(1- margin/100)
                         total_selling_price = unit_selling_price * qty 
+
+
 
 
                             
@@ -208,7 +201,6 @@ class SaleOrderLinesImportWizard(models.TransientModel):
                     sale_order_line = self.env['sale.order.line'].create(sale_order_line_values)
 
             else:
-                # self.insert_lines_without_durtaion(df)
                 raise ValidationError('There is a missing column in your file')        
 
 

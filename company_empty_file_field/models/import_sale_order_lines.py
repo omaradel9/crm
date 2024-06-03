@@ -35,7 +35,8 @@ class SaleOrderLinesImportWizard(models.TransientModel):
 
     def insert_lines_with_duration(self,df):
         for index, row in df.iterrows():
-            product_id = self.env['product.product'].search([('name', '=', row[1])],limit=1)
+            product_id = self.env['product.product'].search([('name', '=', row[1])], order='create_date desc', limit=1)
+
             if not product_id:
                 product_id = self.env['product.product'].create({'name': row[1],'description_sale':  row[1] if pd.isnull([row[3]]) else row[3], })
 

@@ -2,11 +2,29 @@ from odoo import models, fields, api
 import base64
 import io
 import pandas as pd
+from datetime import datetime, date
 from odoo.exceptions import  ValidationError
 
 
 class SaleOrderLinesImportWizard(models.TransientModel):
     _inherit = 'sale.order.lines.import.wizard'
+
+
+
+
+  
+    
+    def check_date(self,value):
+        if pd.notnull(value):
+            if isinstance(value, datetime):
+                new_date = datetime.strptime(str(value), '%Y-%m-%d %H:%M:%S').strftime('%Y/%m/%d')
+            else:
+                new_date = value
+
+        else:
+            new_date = ''
+        return new_date
+
 
    
 
@@ -19,7 +37,7 @@ class SaleOrderLinesImportWizard(models.TransientModel):
         for index, row in df.iterrows():
             product_id = self.env['product.product'].search([('name', '=', row[1])])
             if not product_id:
-                product_id = self.env['product.product'].create({'name': row[1],'description_sale': row[3]})
+                product_id = self.env['product.product'].create({'name': row[1],'description_sale':  row[1] if pd.isnull([row[3]]) else row[3], })
 
             if len(row) == 25:
 
@@ -85,11 +103,11 @@ class SaleOrderLinesImportWizard(models.TransientModel):
                                 'price_subtotal': total_selling_price,
 
                                 'product_number':'' if pd.isnull([row[20]]) else row[20],
-                                'last_date_of_support': '' if pd.isnull([row[21]]) else row[21],
+                                'last_date_of_support':self.check_date(row[21]) ,
                                 'serial_number': '' if pd.isnull([row[22]]) else row[22],
-                                'start_date': '' if pd.isnull([row[23]]) else row[23],
+                                'start_date': self.check_date(row[23]),
 
-                                'end_date':'' if pd.isnull([row[24]]) else row[24],
+                                'end_date':self.check_date(row[24]) ,
                             }
                     else: 
                         sale_order_line_values = {
@@ -116,11 +134,11 @@ class SaleOrderLinesImportWizard(models.TransientModel):
                                 'price_subtotal': self.check_values(row[19], 'Total Selling Price'),
 
                                 'product_number':'' if pd.isnull([row[20]]) else row[20],
-                                'last_date_of_support': '' if pd.isnull([row[21]]) else row[21],
+                                'last_date_of_support':self.check_date(row[21]) ,
                                 'serial_number': '' if pd.isnull([row[22]]) else row[22],
-                                'start_date': '' if pd.isnull([row[23]]) else row[23],
+                                'start_date': self.check_date(row[23]),
 
-                                'end_date':'' if pd.isnull([row[24]]) else row[24],
+                                'end_date':self.check_date(row[24]) ,
 
 
                             }    

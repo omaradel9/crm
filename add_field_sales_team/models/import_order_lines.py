@@ -91,49 +91,50 @@ class SaleOrderLinesImportWizard(models.TransientModel):
                                             if rate.company_id.id == self.env.company.id:
                                                 rate_date = datetime.strptime(str(rate.name), '%Y-%m-%d')
                                                 order_date = datetime.strptime(str(self.order_id.date_order), '%Y-%m-%d %H:%M:%S')
-                                                if rate_date >= order_date:
+                                                if rate_date <= order_date:
                                                     total_price_after_rate = total_price * rate.company_rate
-                                                else:
-                                                    rate = self.env['res.currency.rate'].sudo().search(
-                                                        [('company_id', '=', self.env.company.id), ('currency_id', '=', self.order_id.pricelist_id.currency_id.id)],
-                                                        order='write_date desc', limit=1
-                                                    )
-                                                    total_price_after_rate = total_price * rate.company_rate
-                                                total_price_after_round = round(total_price_after_rate, 2)     
+                                                # else:
+                                                #     rate = self.env['res.currency.rate'].sudo().search(
+                                                #         [('company_id', '=', self.env.company.id), ('currency_id', '=', self.order_id.pricelist_id.currency_id.id)],
+                                                #         order='write_date desc', limit=1
+                                                #     )
+                                                total_price_after_rate = total_price * rate.company_rate
+                                                break
+                                        total_price_after_round = round(total_price_after_rate, 2)     
 
-                                                sale_order_line_values = {
-                                                            'order_id': self.order_id.id,
-                                                            'line_number':' ' if pd.isnull([row[0]]) else row[0],
-                                                            'product_id': product_id.id,
-                                                            'smart_account_mandatory':'' if pd.isnull([row[2]]) else row[2] ,
-                                                            'name': row[3],
-                                                            'cisco_product_ref':'' if pd.isnull([row[4]]) else row[4],
-                                                            'product_family': '' if pd.isnull([row[5]]) else row[5],
-                                                            'duration': 'N/A' if pd.isnull(row[6]) else row[6],
-                                                            'estimated_lead_time': 'N/A' if pd.isnull(row[7]) else row[7],
-                                                            'cost': unit_vendor_list_price,
-                                                            'pricing_term': '' if pd.isnull([row[9]]) else row[9],
-                                                            'product_uom_qty': qty,
-                                                            'unit_net_price':unit_net_price, 
-                                                            'discount_metra': dic_metra,
-                                                            'total_price': total_price_after_round,
+                                        sale_order_line_values = {
+                                                    'order_id': self.order_id.id,
+                                                    'line_number':' ' if pd.isnull([row[0]]) else row[0],
+                                                    'product_id': product_id.id,
+                                                    'smart_account_mandatory':'' if pd.isnull([row[2]]) else row[2] ,
+                                                    'name': row[3],
+                                                    'cisco_product_ref':'' if pd.isnull([row[4]]) else row[4],
+                                                    'product_family': '' if pd.isnull([row[5]]) else row[5],
+                                                    'duration': 'N/A' if pd.isnull(row[6]) else row[6],
+                                                    'estimated_lead_time': 'N/A' if pd.isnull(row[7]) else row[7],
+                                                    'cost': unit_vendor_list_price,
+                                                    'pricing_term': '' if pd.isnull([row[9]]) else row[9],
+                                                    'product_uom_qty': qty,
+                                                    'unit_net_price':unit_net_price, 
+                                                    'discount_metra': dic_metra,
+                                                    'total_price': total_price_after_round,
 
-                                                            'partner_unit_net_price':partner_unit_net_price,
-                                                            'partner_discount': partner_discount,
-                                                            'mergin': margin,
-                                                            'conditions': conditions,
+                                                    'partner_unit_net_price':partner_unit_net_price,
+                                                    'partner_discount': partner_discount,
+                                                    'mergin': margin,
+                                                    'conditions': conditions,
 
-                                                            'price_unit':unit_selling_price,
-                                                            'price_subtotal': total_selling_price,
+                                                    'price_unit':unit_selling_price,
+                                                    'price_subtotal': total_selling_price,
 
-                                                            'product_number':'' if pd.isnull([row[20]]) else row[20],
-                                                            'last_date_of_support':self.check_date(row[21]) ,
-                                                            'serial_number': '' if pd.isnull([row[22]]) else row[22],
-                                                            'start_date': self.check_date(row[23]),
+                                                    'product_number':'' if pd.isnull([row[20]]) else row[20],
+                                                    'last_date_of_support':self.check_date(row[21]) ,
+                                                    'serial_number': '' if pd.isnull([row[22]]) else row[22],
+                                                    'start_date': self.check_date(row[23]),
 
-                                                            'end_date':self.check_date(row[24]) ,
-                                                            }
-                                                sale_order_line = self.env['sale.order.line'].create(sale_order_line_values)
+                                                    'end_date':self.check_date(row[24]) ,
+                                                    }
+                                        sale_order_line = self.env['sale.order.line'].create(sale_order_line_values)
 
                                     else:
                                         raise ValidationError('There is no RATE for this currency')            
@@ -184,45 +185,46 @@ class SaleOrderLinesImportWizard(models.TransientModel):
                                             if rate.company_id.id == self.env.company.id:
                                                 rate_date = datetime.strptime(str(rate.name), '%Y-%m-%d')
                                                 order_date = datetime.strptime(str(self.order_id.date_order), '%Y-%m-%d %H:%M:%S')
-                                                if rate_date >= order_date:
+                                                if rate_date <= order_date:
                                                     total_price_after_rate = total_price * rate.company_rate
-                                                else:
-                                                    rate = self.env['res.currency.rate'].sudo().search(
-                                                        [('company_id', '=', self.env.company.id), ('currency_id', '=', self.order_id.pricelist_id.currency_id.id)],
-                                                        order='write_date desc', limit=1
-                                                    )
+                                                # else:
+                                                #     rate = self.env['res.currency.rate'].sudo().search(
+                                                #         [('company_id', '=', self.env.company.id), ('currency_id', '=', self.order_id.pricelist_id.currency_id.id)],
+                                                #         order='write_date desc', limit=1
+                                                #     )
                                                     total_price_after_rate = total_price * rate.company_rate
-                                                total_price_after_round = round(total_price_after_rate, 2)                                            
-                                                sale_order_line_values = {
-                                                    'order_id': self.order_id.id,
-                                                    'line_number': ' ' if pd.isnull(row[0]) else row[0],
-                                                    'product_id': product_id.id,
-                                                    'smart_account_mandatory': '' if pd.isnull(row[2]) else row[2],
-                                                    'name': row[3],
-                                                    'cisco_product_ref': '' if pd.isnull(row[4]) else row[4],
-                                                    'product_family': '' if pd.isnull(row[5]) else row[5],
-                                                    'duration': 'N/A' if pd.isnull(row[6]) else row[6],
-                                                    'estimated_lead_time': 'N/A' if pd.isnull(row[7]) else row[7],
-                                                    'cost': 0 if pd.isnull(row[8]) else self.check_values(row[8], 'Unit Vendor List Price'),
-                                                    'pricing_term': '' if pd.isnull(row[9]) else row[9],
-                                                    'product_uom_qty': self.check_values(row[10], 'Quantity'),
-                                                    'unit_net_price': self.check_values(row[11], 'Unit Net Price'),
-                                                    'discount_metra': 0 if pd.isnull(row[12]) else self.check_values(row[12], 'Vendor Discount'),
-                                                    'total_price': total_price_after_round,
-                                                    'partner_unit_net_price': self.check_values(row[14], 'Partner Unit Net Price'),
-                                                    'partner_discount': 0 if pd.isnull(row[15]) else self.check_values(row[15], 'Partner Discount'),
-                                                    'mergin': 0 if pd.isnull(row[17]) else self.check_values(row[17], 'Margin'),
-                                                    'conditions': 0 if pd.isnull(row[16]) else self.check_values(row[16], 'Conditions'),
-                                                    'price_unit': self.check_values(row[18], 'Unit Selling Price'),
-                                                    'price_subtotal': self.check_values(row[19], 'Total Selling Price'),
-                                                    'product_number': '' if pd.isnull(row[20]) else row[20],
-                                                    'last_date_of_support': self.check_date(row[21]),
-                                                    'serial_number': '' if pd.isnull(row[22]) else row[22],
-                                                    'start_date': self.check_date(row[23]),
-                                                    'end_date': self.check_date(row[24]),
-                                                }
-                                    
-                                                sale_order_line = self.env['sale.order.line'].create(sale_order_line_values)
+                                                    break
+                                        total_price_after_round = round(total_price_after_rate, 2)                                            
+                                        sale_order_line_values = {
+                                            'order_id': self.order_id.id,
+                                            'line_number': ' ' if pd.isnull(row[0]) else row[0],
+                                            'product_id': product_id.id,
+                                            'smart_account_mandatory': '' if pd.isnull(row[2]) else row[2],
+                                            'name': row[3],
+                                            'cisco_product_ref': '' if pd.isnull(row[4]) else row[4],
+                                            'product_family': '' if pd.isnull(row[5]) else row[5],
+                                            'duration': 'N/A' if pd.isnull(row[6]) else row[6],
+                                            'estimated_lead_time': 'N/A' if pd.isnull(row[7]) else row[7],
+                                            'cost': 0 if pd.isnull(row[8]) else self.check_values(row[8], 'Unit Vendor List Price'),
+                                            'pricing_term': '' if pd.isnull(row[9]) else row[9],
+                                            'product_uom_qty': self.check_values(row[10], 'Quantity'),
+                                            'unit_net_price': self.check_values(row[11], 'Unit Net Price'),
+                                            'discount_metra': 0 if pd.isnull(row[12]) else self.check_values(row[12], 'Vendor Discount'),
+                                            'total_price': total_price_after_round,
+                                            'partner_unit_net_price': self.check_values(row[14], 'Partner Unit Net Price'),
+                                            'partner_discount': 0 if pd.isnull(row[15]) else self.check_values(row[15], 'Partner Discount'),
+                                            'mergin': 0 if pd.isnull(row[17]) else self.check_values(row[17], 'Margin'),
+                                            'conditions': 0 if pd.isnull(row[16]) else self.check_values(row[16], 'Conditions'),
+                                            'price_unit': self.check_values(row[18], 'Unit Selling Price'),
+                                            'price_subtotal': self.check_values(row[19], 'Total Selling Price'),
+                                            'product_number': '' if pd.isnull(row[20]) else row[20],
+                                            'last_date_of_support': self.check_date(row[21]),
+                                            'serial_number': '' if pd.isnull(row[22]) else row[22],
+                                            'start_date': self.check_date(row[23]),
+                                            'end_date': self.check_date(row[24]),
+                                        }
+                            
+                                        sale_order_line = self.env['sale.order.line'].create(sale_order_line_values)
                                     else:
                                         raise ValidationError('There is no RATE for this currency')            
                         else:

@@ -16,11 +16,6 @@ class SaleOrderLinesImportWizard(models.TransientModel):
         default=lambda self: self.env.company.currency_id,
         domain=[('active','=',True)]
     )
-
-
-
-
-  
     
     def check_date(self,value):
         if pd.notnull(value):
@@ -32,17 +27,10 @@ class SaleOrderLinesImportWizard(models.TransientModel):
         else:
             new_date = ''
         return new_date
-
-
-   
-
-    
-
-
-  
-
+        
     def insert_lines_with_duration(self,df):
         for index, row in df.iterrows():
+            print('======================',row[13])
             product_id = self.env['product.product'].search([('name', '=', row[1])], order='create_date desc', limit=1)
 
             if not product_id:
@@ -79,7 +67,7 @@ class SaleOrderLinesImportWizard(models.TransientModel):
                         partner_unit_net_price  = round(unit_net_price - (unit_net_price * (partner_discount / 100)), 2)
                         margin= 0 if pd.isnull([row[17]]) else self.check_values(row[17], 'Margin')
                         conditions = 0 if pd.isnull([row[16]]) else self.check_values(row[16], 'Conditions')
-                        unit_selling_price  = (unit_net_price * (1+ conditions/100))/(1- margin/100)
+                        unit_selling_price  = round((unit_net_price * (1+ conditions/100))/(1- margin/100),2)
                         total_selling_price = unit_selling_price * qty
                         if self.currency_id.id != self.order_id.pricelist_id.currency_id.id:
                             total_price_after_round = 0
@@ -174,6 +162,7 @@ class SaleOrderLinesImportWizard(models.TransientModel):
                                     }
                             sale_order_line = self.env['sale.order.line'].create(sale_order_line_values)      
                     else: 
+                        print('----------------------',self.check_values(row[11], 'Unit Net Price'))
                         if self.currency_id.id != self.order_id.pricelist_id.currency_id.id:
                             if row[13]:
                                 total_price = self.check_values(row[13], 'Total Price')

@@ -140,13 +140,6 @@ class SaleOrderLinesImportWizard(models.TransientModel):
                         conditions = 0 if pd.isnull([row[16]]) else self.check_values(row[16], 'Conditions')
                         unit_selling_price  = (unit_net_price * (1+ conditions/100))/(1- margin/100)
                         total_selling_price = unit_selling_price * qty 
-
-
-
-
-                            
-
-                
                         sale_order_line_values = {
                                 'order_id': self.order_id.id,
                                 'line_number':' ' if pd.isnull([row[0]]) else row[0],
@@ -218,17 +211,7 @@ class SaleOrderLinesImportWizard(models.TransientModel):
                 elif self.import_lines_types == 'add_lines':
                     self.insert_lines_with_duration(df)
                 else:
-                    raise ValidationError('You need to select value from the Import Type Field')    
-
-
-
-                 
-                  
-
-                                 
-        
-
-
+                    raise ValidationError('You need to select value from the Import Type Field')
         else:
             raise ValidationError('YOU DID NOT SELECT FILE TO IMPORT, PLEASE SELECT ONE')                            
 

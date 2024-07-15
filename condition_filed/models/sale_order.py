@@ -32,7 +32,9 @@ class SaleOrder(models.Model):
                     elif duration == 0:
                         line.duration = False
         
-        return duration_values               
+        return duration_values 
+    
+    
 
 
 

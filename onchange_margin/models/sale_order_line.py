@@ -12,7 +12,7 @@ class SaleOrder(models.Model):
     _inherit="sale.order.line"
 
 
-    alt_barcode = fields.Char('Metra Code', related='product_template_id.alt_barcode')
+    alt_barcode = fields.Char('Metra Code', related='product_template_id.default_code')
     product_template_id = fields.Many2one(
         string="MPN",
         comodel_name='product.template',

@@ -10,7 +10,7 @@ class SaleOrderLine(models.Model):
     cisco_product_ref = fields.Text(string="Vendor Product Reference")
     product_family = fields.Text(string="Product Family / Service Level")
     estimated_lead_time = fields.Text(string="Estimated Lead Time (Days)")
-    cost = fields.Float('Unit Vendor List Price')
+    cost = fields.Float('Unit Vendor List Price',digits=(16, 3))
 
 
     pricing_term  =fields.Text()

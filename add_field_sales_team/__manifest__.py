@@ -18,7 +18,7 @@
     'version': '0.1',
 
     # any module necessary for this one to work correctly
-    'depends': ['base','product','sales_team','company_empty_file_field','sale'],
+    'depends': ['base','product','sales_team','company_empty_file_field','sale','crm_kanban_view'],
 
     # always loaded
     'data': [
@@ -26,7 +26,8 @@
         'views/res_company_view.xml',
         'views/product_template_view.xml',
         'views/sales_team_view.xml',
-        'views/sale_order_wizard.xml'
+        'views/sale_order_wizard.xml',
+        'views/sale_order_view.xml'
     ],
   
 }

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="sale_order_industry_view_tree_inherit" model="ir.ui.view">
+        <field name="name">view.order.tree.inherit</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.view_quotation_tree_with_onboarding"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='partner_id']" position="after">
+                <field name="end_user_id" />
+                <field name="end_user_industry_id" />
+            </xpath>
+        </field>
+    </record>
+
+
+    <record id="sale_order_industry_view_form_inherit" model="ir.ui.view">
+        <field name="name">view.order.form.inherit</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.view_order_form"/>
+        <field name="arch" type="xml">
+       
+            <xpath expr="//field[@name='end_user_id']" position="after">
+                <field name="end_user_industry_id" />
+            </xpath>
+      
+        </field>
+    </record>
+</odoo>

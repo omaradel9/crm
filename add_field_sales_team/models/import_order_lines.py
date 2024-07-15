@@ -67,7 +67,7 @@ class SaleOrderLinesImportWizard(models.TransientModel):
                         partner_unit_net_price  = round(unit_net_price - (unit_net_price * (partner_discount / 100)), 2)
                         margin= 0 if pd.isnull([row[17]]) else self.check_values(row[17], 'Margin')
                         conditions = 0 if pd.isnull([row[16]]) else self.check_values(row[16], 'Conditions')
-                        unit_selling_price  = round((unit_net_price * (1+ conditions/100))/(1- margin/100),2)
+                        unit_selling_price  = round((unit_net_price * (1+ conditions/100))/(1- margin/100),4)
                         total_selling_price = unit_selling_price * qty
                         if self.currency_id.id != self.order_id.pricelist_id.currency_id.id:
                             total_price_after_round = 0

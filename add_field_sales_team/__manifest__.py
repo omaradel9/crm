@@ -27,7 +27,8 @@
         'views/product_template_view.xml',
         'views/sales_team_view.xml',
         'views/sale_order_wizard.xml',
-        'views/sale_order_view.xml'
+        'views/sale_order_view.xml',
+        'views/crm_lead_view.xml',
     ],
   
 }

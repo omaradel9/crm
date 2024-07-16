@@ -1,0 +1,25 @@
+<odoo>
+    <record id="view_sap_id_wizard_form" model="ir.ui.view">
+        <field name="name">sap.id.wizard.form</field>
+        <field name="model">sap.id.wizard</field>
+        <field name="arch" type="xml">
+            <form string="Add SAP ID">
+                <group>
+                    <field name="partner_id" invisible="1"/>
+                    <field name="sap_id"/>
+                </group>
+                <footer>
+                    <button string="Confirm" type="object" name="action_confirm" class="btn-primary"/>
+                    <button string="Cancel" class="btn-secondary" special="cancel"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_sap_id_wizard" model="ir.actions.act_window">
+        <field name="name">Add SAP ID</field>
+        <field name="res_model">sap.id.wizard</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+    </record>
+</odoo>

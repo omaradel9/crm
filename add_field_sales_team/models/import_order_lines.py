@@ -30,7 +30,6 @@ class SaleOrderLinesImportWizard(models.TransientModel):
         
     def insert_lines_with_duration(self,df):
         for index, row in df.iterrows():
-            print('======================',row[13])
             product_id = self.env['product.product'].search([('name', '=', row[1])], order='create_date desc', limit=1)
 
             if not product_id:
@@ -81,15 +80,9 @@ class SaleOrderLinesImportWizard(models.TransientModel):
                                                 order_date = datetime.strptime(str(self.order_id.date_order), '%Y-%m-%d %H:%M:%S')
                                                 if rate_date <= order_date:
                                                     total_price_after_rate = total_price * rate.company_rate
-                                                # else:
-                                                #     rate = self.env['res.currency.rate'].sudo().search(
-                                                #         [('company_id', '=', self.env.company.id), ('currency_id', '=', self.order_id.pricelist_id.currency_id.id)],
-                                                #         order='write_date desc', limit=1
-                                                #     )
                                                 total_price_after_rate = total_price * rate.company_rate
                                                 break
-                                        total_price_after_round = round(total_price_after_rate, 2)     
-
+                                        total_price_after_round = round(total_price_after_rate, 2) 
                                         sale_order_line_values = {
                                                     'order_id': self.order_id.id,
                                                     'line_number':' ' if pd.isnull([row[0]]) else row[0],
@@ -106,20 +99,16 @@ class SaleOrderLinesImportWizard(models.TransientModel):
                                                     'unit_net_price':unit_net_price, 
                                                     'discount_metra': dic_metra,
                                                     'total_price': total_price_after_round,
-
                                                     'partner_unit_net_price':partner_unit_net_price,
                                                     'partner_discount': partner_discount,
                                                     'mergin': margin,
                                                     'conditions': conditions,
-
                                                     'price_unit':unit_selling_price,
                                                     'price_subtotal': total_selling_price,
-
                                                     'product_number':'' if pd.isnull([row[20]]) else row[20],
                                                     'last_date_of_support':self.check_date(row[21]) ,
                                                     'serial_number': '' if pd.isnull([row[22]]) else row[22],
                                                     'start_date': self.check_date(row[23]),
-
                                                     'end_date':self.check_date(row[24]) ,
                                                     }
                                         sale_order_line = self.env['sale.order.line'].create(sale_order_line_values)
@@ -144,25 +133,20 @@ class SaleOrderLinesImportWizard(models.TransientModel):
                                     'unit_net_price':unit_net_price, 
                                     'discount_metra': dic_metra,
                                     'total_price':total_price,
-
                                     'partner_unit_net_price':partner_unit_net_price,
                                     'partner_discount': partner_discount,
                                     'mergin': margin,
                                     'conditions': conditions,
-
                                     'price_unit':unit_selling_price,
                                     'price_subtotal': total_selling_price,
-
                                     'product_number':'' if pd.isnull([row[20]]) else row[20],
                                     'last_date_of_support':self.check_date(row[21]) ,
                                     'serial_number': '' if pd.isnull([row[22]]) else row[22],
                                     'start_date': self.check_date(row[23]),
-
                                     'end_date':self.check_date(row[24]) ,
                                     }
                             sale_order_line = self.env['sale.order.line'].create(sale_order_line_values)      
                     else: 
-                        print('----------------------',self.check_values(row[11], 'Unit Net Price'))
                         if self.currency_id.id != self.order_id.pricelist_id.currency_id.id:
                             if row[13]:
                                 total_price = self.check_values(row[13], 'Total Price')
@@ -176,14 +160,11 @@ class SaleOrderLinesImportWizard(models.TransientModel):
                                                 order_date = datetime.strptime(str(self.order_id.date_order), '%Y-%m-%d %H:%M:%S')
                                                 if rate_date <= order_date:
                                                     total_price_after_rate = total_price * rate.company_rate
-                                                # else:
-                                                #     rate = self.env['res.currency.rate'].sudo().search(
-                                                #         [('company_id', '=', self.env.company.id), ('currency_id', '=', self.order_id.pricelist_id.currency_id.id)],
-                                                #         order='write_date desc', limit=1
-                                                #     )
-                                                    total_price_after_rate = total_price * rate.company_rate
-                                                    break
-                                        total_price_after_round = round(total_price_after_rate, 2)                                            
+                                             
+                                                total_price_after_rate = total_price * rate.company_rate
+                                                break
+                                        total_price_after_round = round(total_price_after_rate, 2) 
+                                                                                   
                                         sale_order_line_values = {
                                             'order_id': self.order_id.id,
                                             'line_number': ' ' if pd.isnull(row[0]) else row[0],

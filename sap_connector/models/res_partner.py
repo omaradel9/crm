@@ -1,3 +1,4 @@
+from odoo.exceptions import ValidationError
 from odoo import fields,models,api
 
 
@@ -22,3 +23,9 @@ class ResPartner(models.Model):
                 if partner.child_ids:
                     partner.child_ids.write({'sap_id': vals['sap_id']})
         return res
+    
+    @api.onchange('sap_id')
+    def onchange_sap_id(self):
+        for rec in self:
+            if rec.parent_id:
+                raise ValidationError("You Can't Change the SAP ID, instead you can change it's Parent")

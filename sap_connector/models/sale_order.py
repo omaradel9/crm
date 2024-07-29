@@ -31,7 +31,8 @@ class SaleOrder(models.Model):
             pro = []     
             for line in order.order_line:
                 if not line.alt_barcode and line.display_type != 'line_section':
-                    pro.append(line.product_template_id.id)
+                    if all(line.product_template_id.id != id for id in pro):
+                        pro.append(line.product_template_id.id)
 
             if len(pro):
                 return {
@@ -45,6 +46,7 @@ class SaleOrder(models.Model):
 }
 
                     }
+             
             
             if not note:
                   return {

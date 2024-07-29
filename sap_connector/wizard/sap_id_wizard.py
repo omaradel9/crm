@@ -20,7 +20,8 @@ class SAPIDWizard(models.TransientModel):
         pro = []
         for line in self.order_id.order_line:
                 if not line.alt_barcode and line.display_type != 'line_section':
-                    pro.append(line.product_template_id.id)
+                    if all(line.product_template_id.id != id for id in pro):
+                        pro.append(line.product_template_id.id)
         if len(pro):
             return {
                 'type': 'ir.actions.act_window',

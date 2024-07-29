@@ -9,9 +9,9 @@
             <xpath expr="//header/button[@name='action_dublicate_quotation']" position="after">
                 <button name="action_send_to_sap" type="object" string="Send To SAP"/>
             </xpath>
-            <xpath expr="//field[@name='margin']" position="after">
+            <!-- <xpath expr="//field[@name='margin']" position="after">
                 <field name="ready_to_integrate"/>
-            </xpath>
+            </xpath> -->
 
             <xpath expr="//field[@name='partner_id']" position="attributes">
                 <attribute name="domain">[('parent_id','=', False)]</attribute>

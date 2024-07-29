@@ -1,0 +1,31 @@
+<odoo>
+    <record id="set_default_code_product_wizard_form" model="ir.ui.view">
+        <field name="name">set.default.code.product.form</field>
+        <field name="model">set.default.code.product</field>
+        <field name="arch" type="xml">
+            <form string="Add Materiel Number">
+                <group>
+                 
+                    <field name="sale_order_line_ids">
+                        <tree string="" editable="bottom" create="true">
+                            <field name="product_template_id" />
+                            <field name="default_code" />
+                                
+                        </tree>
+                    </field>
+                </group>
+                <footer>
+                    <button string="Confirm" type="object" name="action_confirm" class="btn-primary"/>
+                    <button string="Cancel" class="btn-secondary" special="cancel"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_set_default_code_product_wizard_form" model="ir.actions.act_window">
+        <field name="name">set.default.code.product.wizard.action</field>
+        <field name="res_model">set.default.code.product</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+    </record>
+</odoo>

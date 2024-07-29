@@ -1,2 +1,5 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
 access_sap_id_wizard_user,access_sap_id_wizard_user,model_sap_id_wizard,base.group_user,1,1,1,1
+access_set_default_code_product,access_set_default_code_product,model_set_default_code_product,base.group_user,1,1,1,1
+access_sale_order_line_wizard,access_sale_order_line_wizard,model_sale_order_line_wizard,base.group_user,1,1,1,1
+access_set_payment_note,access_set_payment_note,model_set_payment_note,base.group_user,1,1,1,1

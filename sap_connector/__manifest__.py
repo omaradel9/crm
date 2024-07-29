@@ -26,6 +26,8 @@
         'views/res_partner_view.xml',
         'views/sale_order.xml',
         'wizard/sap_id_wizard.xml',
+        'wizard/set_default_code_view.xml',
+        'wizard/set_payment_note.xml',
      
     ],
     'sequence':'-1',

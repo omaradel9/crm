@@ -11,8 +11,8 @@ class SaleOrder(models.Model):
 
     def action_send_to_sap(self):
         for order in self:
-            soup = BeautifulSoup(order.payment_term_id.note, 'html.parser')
-            note = soup.get_text()
+            # soup = BeautifulSoup(order.payment_term_id.note, 'html.parser')
+            # note = soup.get_text()
 
             if not order.partner_id.sap_id:
                     return {
@@ -46,10 +46,15 @@ class SaleOrder(models.Model):
 }
 
                     }
-             
-            
+            note_content = order.payment_term_id.note
+            if isinstance(note_content, str):
+                soup = BeautifulSoup(note_content, 'html.parser')
+                note = soup.get_text()
+            else:
+                note = ''
+
             if not note:
-                  return {
+                return {
                     'type': 'ir.actions.act_window',
                     'name': 'ADD Payment Note',
                     'res_model': 'set.payment.note',
@@ -58,8 +63,21 @@ class SaleOrder(models.Model):
                     'context': {
                         'default_order_id': order.id,
                     },
+                }    
+             
+            
+            # if not note:
+            #       return {
+            #         'type': 'ir.actions.act_window',
+            #         'name': 'ADD Payment Note',
+            #         'res_model': 'set.payment.note',
+            #         'view_mode': 'form',
+            #         'target': 'new',
+            #         'context': {
+            #             'default_order_id': order.id,
+            #         },
 
-                    }    
+            #         }    
                         
                 
                 

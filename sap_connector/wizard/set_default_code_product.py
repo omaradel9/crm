@@ -22,10 +22,14 @@ class SetDefaultCodeProduct(models.TransientModel):
                 product.write({
                     'default_code': line.default_code,
                 })
-        soup = BeautifulSoup(self.order_id.payment_term_id.note, 'html.parser')
-        note = soup.get_text()  
+        note_content = self.order_id.payment_term_id.note
+        if isinstance(note_content, str):
+            soup = BeautifulSoup(note_content, 'html.parser')
+            note = soup.get_text()
+        else:
+            note = ''
+
         if not note:
-      
             return {
                 'type': 'ir.actions.act_window',
                 'name': 'ADD Payment Note',
@@ -35,8 +39,22 @@ class SetDefaultCodeProduct(models.TransientModel):
                 'context': {
                     'default_order_id': self.order_id.id,
                 },
+            }        
+        # soup = BeautifulSoup(self.order_id.payment_term_id.note, 'html.parser')
+        # note = soup.get_text()  
+        # if not note:
+      
+        #     return {
+        #         'type': 'ir.actions.act_window',
+        #         'name': 'ADD Payment Note',
+        #         'res_model': 'set.payment.note',
+        #         'view_mode': 'form',
+        #         'target': 'new',
+        #         'context': {
+        #             'default_order_id': self.order_id.id,
+        #         },
 
-                }       
+        #         }       
   
 class SalesOrderLineWizard(models.TransientModel):
     _name = 'sale.order.line.wizard'

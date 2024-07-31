@@ -8,14 +8,14 @@
                  
                     <field name="sale_order_line_ids">
                         <tree string="" editable="bottom" create="true">
-                            <field name="product_template_id" />
-                            <field name="default_code" />
+                            <field name="product_template_id"  readonly="1"/>
+                            <field name="default_code" readonly="1"/>
                                 
                         </tree>
                     </field>
                 </group>
                 <footer>
-                    <button string="Confirm" type="object" name="action_confirm" class="btn-primary"/>
+                    <button string="Ok" type="object" name="action_confirm" class="btn-primary"/>
                     <button string="Cancel" class="btn-secondary" special="cancel"/>
                 </footer>
             </form>

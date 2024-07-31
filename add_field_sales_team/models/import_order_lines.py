@@ -40,10 +40,14 @@ class SaleOrderLinesImportWizard(models.TransientModel):
             if len(row) == 25:
 
                 if pd.isnull(row[1]):
+                    sec_value = ""
+                    for cell in range(8):
+                        if not pd.isnull(row[cell]):
+                            sec_value = row[cell]   
                     sale_order_line_values = {
                         'order_id': self.order_id.id,
                         'display_type': 'line_section',
-                        'name': row[0],
+                        'name': sec_value,
                     
                     }
                     sale_order_line = self.env['sale.order.line'].create(sale_order_line_values) 

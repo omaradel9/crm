@@ -9,7 +9,7 @@
                     <field name="sap_id"/>
                 </group>
                 <footer>
-                    <button string="Confirm" type="object" name="action_confirm" class="btn-primary"/>
+                    <button string="Ok" type="object" name="action_confirm" class="btn-primary"/>
                     <button string="Cancel" class="btn-secondary" special="cancel"/>
                 </footer>
             </form>

@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="add_metra_favicon" inherit_id="web.layout" name="Metra Favicon" priority="17">
+        <xpath expr="//head/link[@rel='shortcut icon']" position="replace">            
+            <link rel="shortcut icon" href="/sap_feedback_page/static/src/img/favicon.ico" type="image/x-icon"/>
+        </xpath>
+    </template>
+
+    <template id="option_header_brand_logo_inherit" inherit_id="website.option_header_brand_logo" name="Header Brand Logo inherit" active="True">
+        <xpath expr="//a" position="replace">
+            <a href="https://metragroup.com" t-attf-class="navbar-brand logo #{_link_class}">
+                <img src="/sale_order_reports/static/src/img/Metra_logo_navy_RGB.png" t-att-alt="'Logo of %s' % res_company.name" t-att-title="res_company.name" style="height: 30px; width: 150px;"/>
+
+                <!-- <span t-field="website.logo" t-options="{'widget': 'image', 'width': 95, 'height': 40}" role="img" t-att-aria-label="'Logo of %s' % website.name" t-att-title="website.name"/> -->
+            </a>
+        </xpath>
+    </template>
+    <template id="submenu_inherit" inherit_id="website.submenu" name="Submenu">
+        <xpath expr="//li[@role='presentation']" position="replace">
+            <li t-if="submenu.is_visible and not (submenu.child_id or submenu.is_mega_menu)" t-attf-class="#{item_class or ''}" role="presentation">
+                <a href="https://metragroup.com"
+                    t-attf-class="#{link_class or ''} #{'active' if submenu.clean_url() and unslug_url(request.httprequest.path) == unslug_url(submenu.clean_url()) else ''}"
+                    role="menuitem"
+                    t-ignore="true"
+                    t-att-target="'_blank' if submenu.new_window else None">
+                    <span t-field="submenu.name"/>
+        
+                </a>
+            </li>
+
+        </xpath>
+    </template>
+    <template id="portal_record_sidebar_inherit" name="My Portal Record Sidebar inherit" inherit_id="portal.portal_record_sidebar">
+        <xpath expr="//div[@id='sidebar_content']/div[2]" position="replace">
+        </xpath>
+    
+    </template>
+
+ 
+     <template id="frontend_layout_inherit" inherit_id="portal.frontend_layout" name="Frontend Layout Inherit">
+        <xpath expr="//div[@id='wrapwrap']/footer" position="replace">
+        </xpath>
+    </template>
+
+    <template id="mail_notification_layout_inherit" inherit_id="mail.mail_notification_layout" name="Mail: mail notification layout template">
+        <xpath expr="//p[contains(text(), 'Powered by')]" position="replace">
+        </xpath>
+        <xpath expr="//div[4]" position="replace">
+            <hr width="100%" style="background-color:rgb(204,204,204);border:medium none;clear:both;display:block;font-size:0px;min-height:1px;line-height:0; margin: 16px 0px 4px 0px;"/>
+            <p>Metra</p>
+            <p style="color: #999999; margin-top:2px; font-size:11px;">
+                <t t-out="company.phone"/>
+                <t t-if="company.email and company.phone"> |</t>
+                <a t-if="company.email" t-att-href="'mailto:%s' % company.email" style="text-decoration:none; color: #999999;" t-out="company.email"/>
+                <t t-if="company.website and (company.phone or company.email)"> |</t>
+                <!-- <a t-if="company.website" t-att-href="'%s' % company.website" style="text-decoration:none; color: #999999;" t-out="company.website"/> -->
+            </p>
+        </xpath>
+    </template>
+
+    <template id="sale_order_portal_content_inherit_sale_stock_inherit"
+        name="Orders Shipping Followup inherit"
+        inherit_id="sale_stock.sale_order_portal_content_inherit_sale_stock">
+        <xpath expr="//div[@id='informations']/t[@t-if='delivery_orders']" position="replace">
+        </xpath>
+    </template>
+
+
+
+    
+
+   
+
+</odoo>

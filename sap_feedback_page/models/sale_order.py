@@ -27,8 +27,7 @@ class SaleOrder(models.Model):
         for rec in self:
             if rec.state == 'draft' or rec.state == 'cancel' :
                 rec.ready_to_integrate = False
-            else:
-                rec.ready_to_integrate = True
+            
 
                     
            
